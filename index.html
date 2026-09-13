@@ -403,8 +403,8 @@ p:last-child{margin-bottom:0;}
   content:"";position:absolute;left:0;top:0;z-index:5;
   height:4px;width:0;background:var(--primary);transition:width .45s var(--ease);
 }
-.svc-card:hover{transform:translateY(-9px);box-shadow:var(--shadow-lg);border-color:transparent;}
-.svc-card:hover::after{width:100%;}
+.svc-grid .svc-card:hover,.svc-grid .svc-card:focus-within{transform:translateY(-9px);box-shadow:var(--shadow-lg);border-color:transparent;}
+.svc-card:hover::after,.svc-card:focus-within::after{width:100%;}
 .svc-media{position:relative;height:clamp(158px,12vw,188px);overflow:hidden;background:var(--ink-3);}
 .svc-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
 .svc-card:hover .svc-media img{transform:scale(1.08);}
@@ -429,13 +429,20 @@ p:last-child{margin-bottom:0;}
   font-family:var(--font-head);font-weight:700;font-size:.75rem;
   letter-spacing:.1em;text-transform:uppercase;color:var(--blue);
 }
+/* Stretched link: the whole card is one click target, while the anchor
+   keeps its real link text for screen readers and search engines. */
+.svc-card{cursor:pointer;}
+.svc-more::before{content:"";position:absolute;inset:0;z-index:6;}
 .svc-more .circle{
   width:27px;height:27px;border-radius:50%;background:var(--blue-soft);
   display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);
 }
 .svc-more .circle svg{width:13px;height:13px;}
-.svc-card:hover .svc-more{color:var(--primary);}
-.svc-card:hover .svc-more .circle{background:var(--primary);color:#fff;transform:translateX(4px);}
+.svc-card:hover .svc-more,.svc-card:focus-within .svc-more{color:var(--primary);}
+.svc-card:hover .svc-more .circle,.svc-card:focus-within .svc-more .circle{background:var(--primary);color:#fff;transform:translateX(4px);}
+/* Ring the whole card on keyboard focus rather than just the link text */
+.svc-card:has(.svc-more:focus-visible){outline:3px solid var(--blue);outline-offset:3px;}
+.svc-card:has(.svc-more:focus-visible) .svc-more:focus-visible{outline:none;}
 
 /* ---------- Tabs ---------- */
 .tabs-nav{
@@ -496,7 +503,7 @@ p:last-child{margin-bottom:0;}
   color:rgba(255,255,255,.05);transition:color .35s var(--ease);pointer-events:none;
 }
 .step:hover::before{color:rgba(247,149,33,.16);}
-.step:hover{background:rgba(255,255,255,.09);border-color:rgba(247,149,33,.55);transform:translateY(-8px);}
+.step-grid .step:hover{background:rgba(255,255,255,.09);border-color:rgba(247,149,33,.55);transform:translateY(-8px);}
 .step-ico{
   width:62px;height:62px;border-radius:16px;background:var(--primary-soft);
   border:1px solid rgba(247,149,33,.3);
