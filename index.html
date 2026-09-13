@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skiptracing, Field Services and Debt Recovery Australia Wide | IRS Group</title>
+<meta name="description" content="IRS Group locates hard to find people, serves legal documents and recovers what you are owed. Australia wide skiptracing, process serving, repossessions and debt collection backed by 25 years of experience.">
+<link rel="icon" href="https://www.irsgroup.com.au/wp-content/uploads/2025/06/site-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   IRS GROUP  |  Homepage redesign
+   Tokens
+   ============================================================ */
+:root{
+  --primary:#f79521;
+  --secondary:#828486;
+  --blue:#28ace2;
+
+  --primary-dark:#d97c0c;
+  --primary-soft:rgba(247,149,33,.12);
+  --blue-dark:#1d8ab8;
+  --blue-soft:rgba(40,172,226,.12);
+
+  --ink:#0e141b;
+  --ink-2:#16202b;
+  --ink-3:#1f2c3a;
+  --body:#4b5663;
+  --heading:#101820;
+  --line:#e4e8ed;
+  --surface:#ffffff;
+  --surface-2:#f5f7fa;
+  --surface-3:#eef2f6;
+
+  --radius-sm:10px;
+  --radius:16px;
+  --radius-lg:24px;
+  --shadow-sm:0 2px 8px rgba(16,24,32,.06);
+  --shadow:0 12px 32px rgba(16,24,32,.10);
+  --shadow-lg:0 28px 70px rgba(16,24,32,.18);
+
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-head:'Plus Jakarta Sans','Inter',system-ui,sans-serif;
+
+  --container:1440px;
+  --gutter:28px;
+  --header-h:92px;
+  --ease:cubic-bezier(.22,.75,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.75;
+  color:var(--body);
+  background:var(--surface);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+button,input,select,textarea{font:inherit;color:inherit;}
+ul{margin:0;padding:0;list-style:none;}
+
+h1,h2,h3,h4,h5{
+  font-family:var(--font-head);
+  color:var(--heading);
+  margin:0 0 .6em;
+  line-height:1.14;
+  letter-spacing:-.02em;
+  font-weight:800;
+}
+h1{font-size:clamp(2.35rem,4.2vw,4.15rem);}
+h2{font-size:clamp(1.95rem,3vw,3rem);}
+h3{font-size:clamp(1.35rem,1.8vw,1.85rem);}
+h4{font-size:clamp(1.1rem,1.3vw,1.3rem);font-weight:700;}
+p{margin:0 0 1.1em;}
+p:last-child{margin-bottom:0;}
+
+/* ---------- Layout ---------- */
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+@media (min-width:1800px){
+  :root{--container:1880px;--gutter:40px;}
+}
+.section{padding:clamp(64px,7vw,124px) 0;}
+[id]{scroll-margin-top:calc(var(--header-h) + 16px);}
+.section--tight{padding:clamp(52px,5vw,86px) 0;}
+.section--alt{background:var(--surface-2);}
+.section--dark{background:var(--ink);color:rgba(255,255,255,.76);}
+.section--dark h2,.section--dark h3,.section--dark h4{color:#fff;}
+
+/* Centered headers deliberately carry no max-width */
+.sec-head{margin-bottom:clamp(38px,4vw,64px);}
+.sec-head--center{text-align:center;}
+.sec-head p{font-size:1.08rem;}
+.sec-head--center p{margin-inline:0;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-head);
+  font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--primary);margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--primary);border-radius:2px;}
+.sec-head--center .eyebrow::after{content:"";width:28px;height:2px;background:var(--primary);border-radius:2px;}
+.section--dark .eyebrow{color:var(--primary);}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  font-family:var(--font-head);font-weight:700;font-size:.95rem;
+  letter-spacing:.02em;text-transform:uppercase;
+  padding:17px 30px;border-radius:12px;border:2px solid transparent;
+  cursor:pointer;transition:all .25s var(--ease);white-space:nowrap;
+}
+.btn svg{width:18px;height:18px;flex:none;}
+.btn--primary{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 10px 26px rgba(247,149,33,.32);}
+.btn--primary:hover{background:var(--primary-dark);border-color:var(--primary-dark);transform:translateY(-2px);box-shadow:0 16px 34px rgba(247,149,33,.42);}
+.btn--blue{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 10px 26px rgba(40,172,226,.3);}
+.btn--blue:hover{background:var(--blue-dark);border-color:var(--blue-dark);transform:translateY(-2px);}
+.btn--ghost{background:transparent;border-color:rgba(255,255,255,.5);color:#fff;}
+.btn--ghost:hover{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-2px);}
+.btn--outline{background:transparent;border-color:var(--line);color:var(--heading);}
+.btn--outline:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-soft);}
+.btn--block{width:100%;white-space:normal;text-align:center;line-height:1.35;}
+.btn--lg{padding:20px 36px;font-size:1rem;}
+
+.link-arrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-head);font-weight:700;font-size:.92rem;
+  color:var(--blue);text-transform:uppercase;letter-spacing:.06em;
+}
+.link-arrow svg{width:16px;height:16px;transition:transform .25s var(--ease);}
+.link-arrow:hover svg{transform:translateX(5px);}
+
+/* ---------- Top bar ---------- */
+.topbar{background:var(--blue);color:#fff;font-size:.92rem;}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:46px;}
+.topbar-note{display:flex;align-items:center;gap:9px;font-weight:500;opacity:.95;}
+.topbar-note svg{width:16px;height:16px;flex:none;}
+.topbar-links{display:flex;align-items:center;gap:28px;}
+.topbar-links a{display:inline-flex;align-items:center;gap:9px;font-weight:600;transition:opacity .2s;}
+.topbar-links a:hover{opacity:.8;}
+.topbar-links svg{width:16px;height:16px;flex:none;}
+@media (max-width:900px){.topbar{display:none;}}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:900;background:#fff;
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .3s var(--ease),padding .3s var(--ease);
+}
+.site-header.is-stuck{box-shadow:0 10px 30px rgba(16,24,32,.09);}
+.header-inner{display:flex;align-items:center;gap:26px;min-height:var(--header-h);transition:min-height .3s var(--ease);}
+.site-header.is-stuck .header-inner{min-height:74px;}
+.brand{display:flex;align-items:center;flex:none;}
+.brand img{width:82px;transition:width .3s var(--ease);}
+.site-header.is-stuck .brand img{width:66px;}
+
+.main-nav{margin-left:auto;}
+.nav-list{display:flex;align-items:center;gap:4px;}
+.nav-item{position:relative;}
+.nav-link{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--font-head);font-weight:700;font-size:.87rem;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--heading);
+  padding:12px 14px;border-radius:9px;transition:color .2s,background .2s;
+}
+.nav-link .caret{width:11px;height:11px;transition:transform .25s var(--ease);opacity:.55;}
+.nav-item:hover>.nav-link,.nav-link.is-active{color:var(--primary);background:var(--primary-soft);}
+.nav-item:hover .caret{transform:rotate(180deg);}
+.submenu{
+  position:absolute;top:calc(100% + 10px);left:0;min-width:266px;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);padding:8px;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:all .24s var(--ease);
+}
+.submenu::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px;}
+.nav-item:hover .submenu{opacity:1;visibility:visible;transform:translateY(0);}
+.submenu a{
+  display:block;padding:11px 15px;border-radius:9px;
+  font-size:.94rem;font-weight:500;color:var(--body);transition:all .18s;
+}
+.submenu a:hover{background:var(--surface-2);color:var(--primary);padding-left:19px;}
+
+.header-actions{display:flex;align-items:center;gap:14px;flex:none;}
+/* Circular phone button with dark background, sits left of the hamburger */
+.phone-circle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--ink);color:#fff;
+  flex:none;transition:all .25s var(--ease);
+}
+.phone-circle svg{width:21px;height:21px;}
+.phone-circle:hover{background:var(--primary);border-color:var(--primary);transform:translateY(-2px) rotate(-8deg);}
+
+.burger{
+  display:none;align-items:center;justify-content:center;flex-direction:column;gap:6px;
+  width:52px;height:52px;border-radius:13px;border:2px solid var(--line);
+  background:#fff;cursor:pointer;padding:0;transition:all .25s var(--ease);
+}
+.burger span{display:block;width:23px;height:2.5px;border-radius:3px;background:var(--ink);transition:all .3s var(--ease);}
+.burger.is-open{border-color:var(--primary);background:var(--primary);}
+.burger.is-open span{background:#fff;}
+.burger.is-open span:nth-child(1){transform:translateY(8.5px) rotate(45deg);}
+.burger.is-open span:nth-child(2){opacity:0;transform:scaleX(.4);}
+.burger.is-open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg);}
+
+@media (max-width:1180px){
+  .nav-link{font-size:.8rem;padding:11px 9px;}
+  .brand img{width:70px;}
+}
+@media (max-width:1024px){
+  :root{--header-h:76px;}
+  .main-nav,.header-actions .btn{display:none;}
+  .burger{display:inline-flex;}
+  .header-actions{margin-left:auto;}
+}
+
+/* ---------- Mobile drawer ---------- */
+.drawer{
+  position:fixed;inset:0;z-index:950;overflow:hidden;
+  background:rgba(14,20,27,.55);backdrop-filter:blur(4px);
+  opacity:0;visibility:hidden;transition:all .3s var(--ease);
+}
+.drawer.is-open{opacity:1;visibility:visible;}
+.drawer-panel{
+  position:absolute;top:0;right:0;height:100%;width:min(420px,88vw);
+  background:#fff;padding:26px 24px 120px;overflow-y:auto;
+  transform:translateX(100%);transition:transform .36s var(--ease);
+}
+.drawer.is-open .drawer-panel{transform:translateX(0);}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+.drawer-head img{width:62px;}
+.drawer-close{
+  width:44px;height:44px;border-radius:11px;border:2px solid var(--line);
+  background:#fff;cursor:pointer;font-size:1.5rem;line-height:1;color:var(--heading);
+}
+.m-nav>li{border-bottom:1px solid var(--line);}
+.m-link{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  width:100%;padding:16px 2px;background:none;border:0;text-align:left;cursor:pointer;
+  font-family:var(--font-head);font-weight:700;font-size:1rem;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--heading);
+}
+.m-link svg{width:14px;height:14px;opacity:.5;transition:transform .25s var(--ease);}
+.m-link[aria-expanded="true"] svg{transform:rotate(180deg);color:var(--primary);}
+.m-sub{max-height:0;overflow:hidden;transition:max-height .32s var(--ease);}
+.m-sub a{display:block;padding:11px 0 11px 16px;font-size:.96rem;color:var(--body);border-left:2px solid var(--line);margin-left:2px;}
+.m-sub a:hover{color:var(--primary);border-color:var(--primary);}
+.m-sub li:last-child a{margin-bottom:12px;}
+.drawer-cta{display:grid;gap:12px;margin-top:26px;}
+.drawer-contact{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:grid;gap:14px;}
+.drawer-contact a{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--heading);}
+.drawer-contact svg{width:18px;height:18px;color:var(--primary);flex:none;}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:var(--ink);color:rgba(255,255,255,.8);
+  padding:clamp(56px,6vw,104px) 0 clamp(64px,7vw,118px);
+}
+.hero-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.22;}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 520px at 12% 18%,rgba(40,172,226,.28),transparent 62%),
+    radial-gradient(760px 480px at 88% 82%,rgba(247,149,33,.24),transparent 60%),
+    linear-gradient(100deg,rgba(14,20,27,.96) 34%,rgba(14,20,27,.78) 72%,rgba(14,20,27,.9));
+}
+.hero .container{position:relative;z-index:2;}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(36px,4vw,72px);align-items:center;}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  padding:9px 18px;border-radius:100px;
+  font-family:var(--font-head);font-size:.8rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:26px;
+}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 4px rgba(247,149,33,.25);}
+.hero h1{color:#fff;margin-bottom:24px;}
+.hero h1 .hl{color:var(--primary);}
+.hero-lead{font-size:clamp(1.06rem,1.25vw,1.28rem);color:rgba(255,255,255,.8);max-width:44em;margin-bottom:34px;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px;}
+
+.hero-points{display:flex;flex-wrap:wrap;gap:14px 30px;}
+.hero-points li{display:flex;align-items:center;gap:11px;font-weight:600;color:#fff;font-size:.97rem;}
+.hero-points svg{width:20px;height:20px;color:var(--primary);flex:none;}
+
+/* ---------- Form card ---------- */
+.form-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:clamp(28px,2.4vw,40px);box-shadow:var(--shadow-lg);
+  border-top:5px solid var(--primary);
+}
+.form-card h2{font-size:clamp(1.5rem,1.9vw,1.95rem);margin-bottom:6px;}
+.form-card .form-sub{color:var(--secondary);font-size:.97rem;margin-bottom:24px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field--full{grid-column:1/-1;}
+.field label{
+  font-family:var(--font-head);font-size:.78rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--heading);
+}
+.field label .req{color:var(--primary);}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:11px;
+  background:var(--surface-2);font-size:1rem;color:var(--heading);
+  transition:border-color .2s,background .2s,box-shadow .2s;
+}
+.field textarea{resize:vertical;min-height:104px;}
+.field input::placeholder,.field textarea::placeholder{color:#a2abb5;}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--primary);background:#fff;
+  box-shadow:0 0 0 4px var(--primary-soft);
+}
+.field select{
+  appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23828486' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;background-size:17px;padding-right:44px;
+}
+.consent{display:flex;gap:11px;align-items:flex-start;font-family:var(--font-body);font-size:.87rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--secondary);line-height:1.55;cursor:pointer;}
+.consent input{width:19px;height:19px;margin-top:2px;accent-color:var(--primary);flex:none;}
+.form-note{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin-top:16px;font-size:.85rem;color:var(--secondary);text-align:center;
+}
+.form-note svg{width:15px;height:15px;color:var(--blue);flex:none;}
+.form-success{
+  display:none;background:var(--blue-soft);border:1.5px solid var(--blue);
+  color:#14618a;border-radius:12px;padding:14px 16px;font-size:.94rem;font-weight:600;margin-bottom:16px;
+}
+.form-success.is-visible{display:block;}
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-lead{max-width:none;}
+}
+@media (max-width:560px){
+  .form-grid{grid-template-columns:1fr;}
+  .hero-cta .btn{width:100%;}
+}
+
+/* ---------- Stats ---------- */
+.stats{background:var(--ink-2);padding:0;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.stat{padding:clamp(30px,3vw,46px) clamp(18px,2vw,34px);border-right:1px solid rgba(255,255,255,.09);text-align:center;}
+.stat:last-child{border-right:0;}
+.stat-num{
+  font-family:var(--font-head);font-weight:800;color:var(--primary);
+  font-size:clamp(2.1rem,3.2vw,3.1rem);line-height:1;margin-bottom:10px;letter-spacing:-.03em;
+}
+.stat-label{color:rgba(255,255,255,.72);font-size:.95rem;font-weight:500;line-height:1.45;}
+@media (max-width:820px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .stat:nth-child(2){border-right:0;}
+  .stat:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.09);}
+}
+
+/* ---------- Service cards ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
+.svc-card{
+  position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+}
+.svc-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:transparent;}
+.svc-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface-3);}
+.svc-media img{width:100%;height:100%;object-fit:cover;transition:transform .55s var(--ease);}
+.svc-card:hover .svc-media img{transform:scale(1.07);}
+.svc-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(14,20,27,.72));}
+.svc-tag{
+  position:absolute;left:18px;top:18px;z-index:2;
+  background:rgba(255,255,255,.94);color:var(--heading);
+  font-family:var(--font-head);font-size:.7rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:7px 13px;border-radius:100px;
+}
+.svc-media h3{
+  position:absolute;left:20px;right:20px;bottom:16px;z-index:2;
+  color:#fff;font-size:1.22rem;margin:0;
+}
+.svc-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1;gap:18px;}
+.svc-body p{font-size:.97rem;color:var(--body);margin:0;}
+.svc-body .link-arrow{margin-top:auto;}
+
+/* ---------- Tabs ---------- */
+.tabs-nav{
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  margin-bottom:clamp(30px,3vw,48px);
+}
+.tab-btn{
+  font-family:var(--font-head);font-weight:700;font-size:.9rem;
+  text-transform:uppercase;letter-spacing:.05em;
+  padding:15px 28px;border-radius:12px;border:1.5px solid var(--line);
+  background:#fff;color:var(--heading);cursor:pointer;transition:all .25s var(--ease);
+}
+.tab-btn:hover{border-color:var(--primary);color:var(--primary);}
+.tab-btn.is-active{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 10px 24px rgba(247,149,33,.28);}
+.tab-panel{display:none;}
+.tab-panel.is-active{display:block;animation:fadeUp .45s var(--ease);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,68px);align-items:center;}
+.split-media{position:relative;}
+.split-media img{border-radius:var(--radius-lg);box-shadow:var(--shadow);width:100%;}
+.split-media::before{
+  content:"";position:absolute;width:56%;height:56%;right:-22px;top:-22px;z-index:-1;border-radius:var(--radius-lg);
+  background-image:radial-gradient(var(--primary) 1.6px,transparent 1.6px);background-size:15px 15px;opacity:.4;
+}
+.check-list{display:grid;gap:13px;margin:24px 0 30px;}
+.check-list li{display:flex;gap:13px;align-items:flex-start;font-size:1rem;color:var(--body);}
+.check-list svg{width:22px;height:22px;color:var(--primary);flex:none;margin-top:2px;}
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;}
+  .split--flip .split-media{order:-1;}
+}
+
+/* ---------- Process / why ---------- */
+.why{position:relative;overflow:hidden;background:var(--ink);}
+.why-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;}
+.why::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,27,.94),rgba(14,20,27,.97));}
+.why .container{position:relative;z-index:2;}
+.step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;}
+.step{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);padding:34px 28px;transition:all .3s var(--ease);
+}
+.step:hover{background:rgba(255,255,255,.08);border-color:rgba(247,149,33,.5);transform:translateY(-6px);}
+.step-ico{
+  width:62px;height:62px;border-radius:16px;background:var(--primary-soft);
+  border:1px solid rgba(247,149,33,.3);
+  display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+}
+.step-ico svg{width:28px;height:28px;color:var(--primary);}
+.step-num{
+  font-family:var(--font-head);font-size:.76rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blue);display:block;margin-bottom:9px;
+}
+.step h4{color:#fff;margin-bottom:10px;}
+.step p{color:rgba(255,255,255,.68);font-size:.96rem;margin:0;}
+
+/* ---------- Testimonials ---------- */
+.quote-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:24px;}
+.quote{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 30px;display:flex;flex-direction:column;gap:18px;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.quote:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.stars{display:flex;gap:3px;color:var(--primary);}
+.stars svg{width:19px;height:19px;}
+.quote blockquote{margin:0;font-size:1.03rem;color:var(--heading);line-height:1.7;}
+.quote-by{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:6px;}
+.avatar{
+  width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-head);font-weight:700;font-size:.95rem;
+}
+.quote-by strong{display:block;color:var(--heading);font-size:.97rem;font-family:var(--font-head);}
+.quote-by span{font-size:.87rem;color:var(--secondary);}
+
+/* ---------- FAQ ---------- */
+.faq-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,4vw,72px);align-items:start;}
+@media (max-width:900px){.faq-wrap{grid-template-columns:1fr;}}
+.faq-list{display:grid;gap:14px;}
+.faq-item{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;transition:border-color .25s,box-shadow .25s;}
+.faq-item.is-open{border-color:var(--primary);box-shadow:var(--shadow-sm);}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:22px 24px;background:none;border:0;cursor:pointer;text-align:left;
+  font-family:var(--font-head);font-weight:700;font-size:1.04rem;color:var(--heading);
+}
+.faq-q .sign{
+  width:30px;height:30px;border-radius:50%;background:var(--surface-2);color:var(--heading);flex:none;
+  display:flex;align-items:center;justify-content:center;transition:all .25s var(--ease);
+}
+.faq-q .sign svg{width:15px;height:15px;}
+.faq-item.is-open .sign{background:var(--primary);color:#fff;transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);}
+.faq-a p{padding:0 24px 24px;margin:0;font-size:1rem;}
+
+/* ---------- CTA band ---------- */
+.cta-band{
+  background:linear-gradient(120deg,var(--primary) 0%,#f2820a 55%,var(--primary-dark) 100%);
+  color:#fff;position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.22) 1.6px,transparent 1.6px);background-size:22px 22px;opacity:.55;
+}
+.cta-band .container{position:relative;z-index:2;}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;}
+.cta-inner h2{color:#fff;margin-bottom:10px;}
+.cta-inner p{color:rgba(255,255,255,.93);font-size:1.08rem;margin:0;}
+.cta-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.cta-actions .btn--white{background:#fff;border-color:#fff;color:var(--heading);}
+.cta-actions .btn--white:hover{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateY(-2px);}
+
+/* ---------- Contact block (contact info + map + form) ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,3.5vw,60px);align-items:start;}
+.info-list{display:grid;gap:16px;margin:30px 0 34px;}
+.info-item{
+  display:flex;gap:18px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+  transition:border-color .25s,transform .25s var(--ease),box-shadow .25s;
+}
+.info-item:hover{border-color:var(--primary);transform:translateX(5px);box-shadow:var(--shadow-sm);}
+.info-ico{
+  width:50px;height:50px;border-radius:13px;background:var(--ink);color:#fff;flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.info-ico svg{width:21px;height:21px;}
+.info-item h4{margin:0 0 4px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--secondary);font-weight:700;}
+.info-item .val{display:block;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--heading);line-height:1.4;}
+.info-item .sub{display:block;font-size:.92rem;color:var(--secondary);line-height:1.5;}
+.info-item .info-text{flex:1;min-width:0;}
+.map-frame{
+  border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);height:340px;background:var(--surface-3);
+}
+.map-frame iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.25);}
+.contact-form-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(28px,2.4vw,42px);box-shadow:var(--shadow);border-top:5px solid var(--blue);
+}
+@media (max-width:920px){.contact-grid{grid-template-columns:1fr;}}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--ink);color:rgba(255,255,255,.68);padding-top:clamp(56px,5.5vw,88px);}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;
+  gap:clamp(28px,3vw,52px);padding-bottom:clamp(42px,4vw,64px);
+}
+.footer-logo{width:118px;margin-bottom:22px;}
+.footer-col h4{color:#fff;font-size:.86rem;letter-spacing:.13em;text-transform:uppercase;margin-bottom:22px;}
+.footer-col p{font-size:.97rem;line-height:1.8;}
+.footer-links{display:grid;gap:12px;}
+.footer-links a{display:inline-flex;align-items:center;gap:10px;font-size:.97rem;transition:color .2s,gap .2s;}
+.footer-links a svg{width:13px;height:13px;color:var(--primary);flex:none;}
+.footer-links a:hover{color:var(--primary);gap:14px;}
+.footer-contact{display:grid;gap:16px;}
+.footer-contact a,.footer-contact div{display:flex;gap:13px;align-items:flex-start;font-size:.99rem;}
+.footer-contact svg{width:18px;height:18px;color:var(--primary);flex:none;margin-top:4px;}
+.footer-contact a:hover{color:var(--primary);}
+.socials{display:flex;gap:11px;margin-top:24px;}
+.socials a{
+  width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;
+  transition:all .25s var(--ease);
+}
+.socials svg{width:19px;height:19px;color:#fff;}
+.socials a:hover{background:var(--primary);border-color:var(--primary);transform:translateY(-3px);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);padding:24px 0;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-size:.9rem;
+}
+.footer-bottom a:hover{color:var(--primary);}
+@media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.footer-grid{grid-template-columns:1fr;}.footer-bottom{justify-content:center;text-align:center;}}
+
+/* ---------- Floating call now button (mobile) ---------- */
+.call-float{
+  position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:880;
+  display:none;align-items:center;gap:11px;
+  background:var(--primary);color:#fff;
+  font-family:var(--font-head);font-weight:800;font-size:.98rem;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:16px 30px;border-radius:100px;
+  box-shadow:0 14px 34px rgba(247,149,33,.48),0 0 0 6px rgba(247,149,33,.14);
+  animation:callPulse 2.6s ease-in-out infinite;
+}
+.call-float svg{width:19px;height:19px;}
+.call-float:active{transform:translateX(-50%) scale(.97);}
+@keyframes callPulse{
+  0%,100%{box-shadow:0 14px 34px rgba(247,149,33,.48),0 0 0 6px rgba(247,149,33,.14);}
+  50%{box-shadow:0 14px 34px rgba(247,149,33,.48),0 0 0 14px rgba(247,149,33,0);}
+}
+@media (max-width:900px){
+  .call-float{display:inline-flex;}
+  body{padding-bottom:82px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .call-float{animation:none;}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.is-in{opacity:1;transform:none;}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px;}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     GLOBAL HEADER  (will live in the WordPress global header)
+     ============================================================ -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z"/><circle cx="12" cy="11" r="3"/></svg>
+      <span>Australia wide coverage, offices in Gold Coast QLD and Adelaide SA</span>
+    </div>
+    <ul class="topbar-links">
+      <li><a href="mailto:admin@irsgroup.com.au">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        admin@irsgroup.com.au</a></li>
+      <li><a href="tel:0755188460">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+        07 5518 8460</a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="brand" aria-label="IRS Group home">
+        <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/06/site-logo.png" alt="IRS Group" width="145" height="127">
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link is-active" href="/">Home</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="/skiptracing-services/">Skiptracing
+              <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <ul class="submenu">
+              <li><a href="/skiptracing-locates/">Skiptracing Locates</a></li>
+              <li><a href="/skip-trace-search/">Searches</a></li>
+              <li><a href="/investigations-in-depth-locations/">Investigations, In Depth Locations</a></li>
+              <li><a href="/international-skiptracing/">International Skiptracing</a></li>
+              <li><a href="/high-volume-skiptracing/">High Volume Skiptracing</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/debt-collections/">Debt Collection</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="/field-services/">Field Services
+              <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <ul class="submenu">
+              <li><a href="/process-serving/">Process Serving</a></li>
+              <li><a href="/field-calls/">Field Calls</a></li>
+              <li><a href="/repossessions/">Repossession</a></li>
+              <li><a href="/lockouts-evictions/">Lockouts and Evictions</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/who-we-are/">About
+              <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <ul class="submenu">
+              <li><a href="/who-we-are/">Who We Are</a></li>
+              <li><a href="/blog/">Blogs</a></li>
+              <li><a href="/affidavits/">Affidavits</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/book-now/">Book Now</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:0755188460" class="phone-circle" aria-label="Call IRS Group on 07 5518 8460">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+        </a>
+        <a href="#quote" class="btn btn--primary">Instant Quote</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/06/site-logo.png" alt="IRS Group">
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="m-nav">
+      <li><a class="m-link" href="/">Home</a></li>
+      <li>
+        <button class="m-link" aria-expanded="false">Skiptracing
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="m-sub">
+          <li><a href="/skiptracing-locates/">Skiptracing Locates</a></li>
+          <li><a href="/skip-trace-search/">Searches</a></li>
+          <li><a href="/investigations-in-depth-locations/">Investigations, In Depth Locations</a></li>
+          <li><a href="/international-skiptracing/">International Skiptracing</a></li>
+          <li><a href="/high-volume-skiptracing/">High Volume Skiptracing</a></li>
+        </ul>
+      </li>
+      <li><a class="m-link" href="/debt-collections/">Debt Collection</a></li>
+      <li>
+        <button class="m-link" aria-expanded="false">Field Services
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="m-sub">
+          <li><a href="/process-serving/">Process Serving</a></li>
+          <li><a href="/field-calls/">Field Calls</a></li>
+          <li><a href="/repossessions/">Repossession</a></li>
+          <li><a href="/lockouts-evictions/">Lockouts and Evictions</a></li>
+        </ul>
+      </li>
+      <li>
+        <button class="m-link" aria-expanded="false">About
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="m-sub">
+          <li><a href="/who-we-are/">Who We Are</a></li>
+          <li><a href="/blog/">Blogs</a></li>
+          <li><a href="/affidavits/">Affidavits</a></li>
+        </ul>
+      </li>
+      <li><a class="m-link" href="/book-now/">Book Now</a></li>
+    </ul>
+    <div class="drawer-cta">
+      <a href="#quote" class="btn btn--primary btn--block">Get An Instant Quote</a>
+      <a href="https://app.icollecthq.com/a/irs-group/signup" class="btn btn--outline btn--block">Self Service Debt Collection</a>
+    </div>
+    <div class="drawer-contact">
+      <a href="tel:0755188460">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+        07 5518 8460</a>
+      <a href="mailto:admin@irsgroup.com.au">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        admin@irsgroup.com.au</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============================================================
+     HERO  |  copy + CTAs left, enquiry form right
+     ============================================================ -->
+<section class="hero" id="quote">
+  <img class="hero-bg" src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/homepage-banner-bg-img-1.png" alt="" aria-hidden="true">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <span class="hero-badge"><span class="dot"></span> Trusted for over 25 years</span>
+        <h1>We Find People, Serve Documents And <span class="hl">Recover What You Are Owed</span></h1>
+        <p class="hero-lead">
+          IRS Group is your one stop shop for debt recovery. From Australia wide skiptracing and in depth
+          locates to process serving, field calls, repossessions and collections, our licensed agents
+          deliver results quickly, discreetly and within the law.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn--primary btn--lg">
+            Get A Free Quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="tel:0755188460" class="btn btn--ghost btn--lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+            07 5518 8460
+          </a>
+        </div>
+
+        <ul class="hero-points">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Australia wide field network
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Licensed and fully compliant
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Bulk and single file capacity
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-card">
+        <h2>Reach Out To Us Today</h2>
+        <p class="form-sub">Tell us what you need and our team will come back to you with a clear price and a plan.</p>
+        <div class="form-success" id="heroSuccess">Thank you. Your enquiry has been received and our team will be in touch shortly.</div>
+        <form class="form-grid" id="heroForm" novalidate>
+          <div class="field">
+            <label for="h-name">Name <span class="req">*</span></label>
+            <input type="text" id="h-name" name="name" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label for="h-email">Email <span class="req">*</span></label>
+            <input type="email" id="h-email" name="email" placeholder="you@company.com.au" required>
+          </div>
+          <div class="field">
+            <label for="h-phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="h-phone" name="phone" placeholder="04XX XXX XXX" required>
+          </div>
+          <div class="field">
+            <label for="h-service">Service <span class="req">*</span></label>
+            <select id="h-service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Skiptracing Services</option>
+              <option>Skiptracing Locates</option>
+              <option>Searches</option>
+              <option>Investigations, In Depth Locations</option>
+              <option>International Skiptracing</option>
+              <option>High Volume Skiptracing</option>
+              <option>Process Serving</option>
+              <option>Field Calls</option>
+              <option>Repossessions</option>
+              <option>Lockouts and Evictions</option>
+              <option>Debt Collection</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="h-msg">How can we help</label>
+            <textarea id="h-msg" name="message" placeholder="Give us a short summary of your matter"></textarea>
+          </div>
+          <div class="field field--full">
+            <label class="consent">
+              <input type="checkbox" name="consent" required>
+              <span>I agree to IRS Group contacting me about my enquiry and accept the privacy policy.</span>
+            </label>
+          </div>
+          <div class="field field--full">
+            <button type="submit" class="btn btn--primary btn--block btn--lg">Send My Enquiry</button>
+          </div>
+        </form>
+        <p class="form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Confidential and obligation free
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Years locating people and recovering assets</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10</div>
+        <div class="stat-label">Specialist services under one roof</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">States and territories covered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Head offices, Gold Coast and Adelaide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section class="section section--alt" id="services">
+  <div class="container">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">Our Services</span>
+      <h2>Field Agents You Can Trust</h2>
+      <p>Professional field agents are crucial in the locating and recovery process for debts and assets. Their expertise ensures effective tracing, minimises losses and lifts recovery rates, giving businesses and individuals real peace of mind.</p>
+    </div>
+
+    <div class="svc-grid">
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Skiptracing</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Skiptracing-Locates.jpg" alt="Skiptracing locates" loading="lazy">
+          <h3>Skiptracing Locates</h3>
+        </div>
+        <div class="svc-body">
+          <p>Sometimes a full locate is not required and only an address verification, phone number or email needs to be found. We have access to advanced databases and decades of investigative technique.</p>
+          <a class="link-arrow" href="/skiptracing-locates/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Skiptracing</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Searches-1.jpg" alt="Skip trace searches" loading="lazy">
+          <h3>Searches</h3>
+        </div>
+        <div class="svc-body">
+          <p>Our range of skip trace search options gives you access to vital information. Powerful tools and years of skiptracing excellence across Australia and beyond make the results well worth the spend.</p>
+          <a class="link-arrow" href="/skip-trace-search/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Investigations</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Investigations-In-Depth-Locations.jpg" alt="In depth location investigations" loading="lazy">
+          <h3>In Depth Locations</h3>
+        </div>
+        <div class="svc-body">
+          <p>Elusive people need a strategic approach. We combine traditional investigative technique with modern technology to uncover information on subjects who keep a deliberately low profile.</p>
+          <a class="link-arrow" href="/investigations-in-depth-locations/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Global</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/International-Skiptracing.jpg" alt="International skiptracing" loading="lazy">
+          <h3>International Skiptracing</h3>
+        </div>
+        <div class="svc-body">
+          <p>If we confirm the subject has left the country we can still manage the matter. Our strong ties with international skiptracing partners keep your file moving wherever the trail leads.</p>
+          <a class="link-arrow" href="/international-skiptracing/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Volume</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Bulk-Skiptracing-1.jpg" alt="High volume skiptracing" loading="lazy">
+          <h3>High Volume Skiptracing</h3>
+        </div>
+        <div class="svc-body">
+          <p>Need more than one or two matters traced? Our trained team handles bulk files with precision and speed, so large ledgers move without losing accuracy on any single record.</p>
+          <a class="link-arrow" href="/high-volume-skiptracing/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Field Services</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Process-Serving.jpg" alt="Process serving" loading="lazy">
+          <h3>Process Serving</h3>
+        </div>
+        <div class="svc-body">
+          <p>Default notices, claims, family law documents and divorce papers served accurately and on time, with affidavits prepared to the standard your matter requires.</p>
+          <a class="link-arrow" href="/process-serving/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Field Services</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Field-Calls.jpg" alt="Field calls" loading="lazy">
+          <h3>Field Calls</h3>
+        </div>
+        <div class="svc-body">
+          <p>Metropolitan and remote coverage for doorstep contact, collection of payments, information, photographs or specific items, always handled with care and professionalism.</p>
+          <a class="link-arrow" href="/field-calls/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Recovery</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Repossessions.jpg" alt="Repossessions" loading="lazy">
+          <h3>Repossessions</h3>
+        </div>
+        <div class="svc-body">
+          <p>Property, machinery, office equipment, livestock and vehicles recovered by skilled mercantile agents who follow every piece of relevant legislation to the letter.</p>
+          <a class="link-arrow" href="/repossessions/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Recovery</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Lockouts-Evictions.jpg" alt="Lockouts and evictions" loading="lazy">
+          <h3>Lockouts and Evictions</h3>
+        </div>
+        <div class="svc-body">
+          <p>All lockouts are conducted in line with relevant legislation and the National Credit Code, supported by detailed condition reports documenting the state of each property.</p>
+          <a class="link-arrow" href="/lockouts-evictions/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc-card reveal">
+        <div class="svc-media">
+          <span class="svc-tag">Collections</span>
+          <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/Collections.jpg" alt="Debt collections" loading="lazy">
+          <h3>Debt Collection</h3>
+        </div>
+        <div class="svc-body">
+          <p>A straightforward, no nonsense approach to collections with transparent pricing, so you keep what is collected while our fees are passed on to the debtor.</p>
+          <a class="link-arrow" href="/debt-collections/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CORE SERVICE TABS
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">IRS Group Services</span>
+      <h2>One Team For Every Stage Of Recovery</h2>
+      <p>As part of our dedication to providing clients with all of their debt recovery needs, IRS Group proudly incorporates Australia wide skiptracing services into our already well established company.</p>
+    </div>
+
+    <div class="tabs" id="tabs">
+      <div class="tabs-nav" role="tablist" aria-label="Core services">
+        <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="tab-skip" id="btn-skip">Skiptracing</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-serve" id="btn-serve">Process Serving</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-field" id="btn-field">Field Calls</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-repo" id="btn-repo">Repossessions</button>
+      </div>
+
+      <div class="tab-panel is-active" id="tab-skip" role="tabpanel" aria-labelledby="btn-skip">
+        <div class="split">
+          <div class="split-media">
+            <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/one-stop-shop-img.png" alt="IRS Group skiptracing team" loading="lazy">
+          </div>
+          <div>
+            <h3>The One Stop Shop For All Your Debt Recovery Needs</h3>
+            <p>IRS Group is known in the industry for our skiptracing and locating skills. For over 25 years we have been the go to place for locating hard to find persons of interest without breaking the budget.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Skilled lateral thinkers from varied investigative backgrounds</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Sophisticated technology paired with a personal approach</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Professional, respectful and discreet with every traced subject</li>
+            </ul>
+            <a href="#contact" class="btn btn--primary">Talk To A Skiptracer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-serve" role="tabpanel" aria-labelledby="btn-serve">
+        <div class="split">
+          <div class="split-media">
+            <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/process-serving-box-img.png" alt="Process serving documents" loading="lazy">
+          </div>
+          <div>
+            <h3>Safe And Legal Document Handling Assurance</h3>
+            <p>For over 25 years our professional process serving has established itself as a leader in the field. Our team delivers a wide range of legal documents efficiently and accurately.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Default notices, claims, family law and divorce documents</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Thorough understanding of state by state legal requirements</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Affidavits prepared and returned promptly</li>
+            </ul>
+            <a href="#contact" class="btn btn--primary">Book A Service</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-field" role="tabpanel" aria-labelledby="btn-field">
+        <div class="split">
+          <div class="split-media">
+            <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/06/home-left.jpg" alt="Field agent on a call" loading="lazy">
+          </div>
+          <div>
+            <h3>Comprehensive Field Call Assistance</h3>
+            <p>IRS Group is your partner for field services across Australia, covering metropolitan areas and remote regions. Our extensive network guarantees dependable support wherever you are located.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Court documents, letters of demand and default notices</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Collection of payments, information, photographs and items</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Qualified agents who report back with clear evidence</li>
+            </ul>
+            <a href="#contact" class="btn btn--primary">Request A Field Call</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-repo" role="tabpanel" aria-labelledby="btn-repo">
+        <div class="split">
+          <div class="split-media">
+            <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/car-repo-img.png" alt="Vehicle repossession" loading="lazy">
+          </div>
+          <div>
+            <h3>Qualified Agents For Repossessions In Australia</h3>
+            <p>We understand the complexities involved in reclaiming assets. Our highly skilled mercantile agents conduct repossession work professionally and ethically, adhering to all legislation with integrity.</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Vehicles, property, machinery, office equipment and livestock</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Full compliance with the National Credit Code</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Detailed condition reports on every recovery</li>
+            </ul>
+            <a href="#contact" class="btn btn--primary">Start A Recovery</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY CHOOSE US
+     ============================================================ -->
+<section class="section why">
+  <img class="why-bg" src="https://www.irsgroup.com.au/wp-content/uploads/2025/06/background_why.jpg" alt="" aria-hidden="true">
+  <div class="container">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2>Do Not Know Where To Start? Here Is How We Help</h2>
+      <p>Every file follows the same disciplined process, so you always know what stage your matter is at and what comes next.</p>
+    </div>
+
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.9 4.9 2.9 2.9"/><path d="m16.2 16.2 2.9 2.9"/><path d="M2 12h4"/><path d="M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <span class="step-num">Step 01</span>
+        <h4>Experienced</h4>
+        <p>With over 25 years in the field we provide quality service and support across all debt recovery needs.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <span class="step-num">Step 02</span>
+        <h4>Find</h4>
+        <p>We locate some of your toughest skips quickly and cost effectively while staying discreet and respectful.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <span class="step-num">Step 03</span>
+        <h4>Verify</h4>
+        <p>We share our skills, expertise and knowledge, examining every detail and leaving nothing unnoticed.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h3"/></svg></div>
+        <span class="step-num">Step 04</span>
+        <h4>Report</h4>
+        <p>You receive a clear report with everything we found, so your next decision is an informed one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT IS A SKIPTRACE
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="split split--flip">
+      <div class="reveal">
+        <span class="eyebrow">About Skiptracing</span>
+        <h2>What Is A Skiptrace</h2>
+        <p>Skiptracing is the process of locating individuals whose contact information is unknown or out of date. Used across debt collection, real estate, legal matters and law enforcement, it draws on a wide range of tools and databases to establish a person's whereabouts.</p>
+        <p>That can mean a current residential address, a working phone number, an email, an employer or other public record information that lets you make contact and move your matter forward.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Address verification and reverse locates</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Full locates on hard to find subjects</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg> Bulk ledger tracing for lenders and agencies</li>
+        </ul>
+        <div class="hero-cta" style="margin-bottom:0">
+          <a href="/who-we-are/" class="btn btn--primary">Learn More About Us</a>
+          <a href="https://app.icollecthq.com/a/irs-group/signup" class="btn btn--outline">Self Service Debt Collection</a>
+        </div>
+      </div>
+      <div class="split-media reveal">
+        <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/who-we-are-large-back-img.png" alt="IRS Group investigators at work" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">Client Feedback</span>
+      <h2>Trusted By Lenders, Lawyers And Business Owners</h2>
+      <p>Placeholder testimonials shown below. Replace the quotes and names with approved client feedback before this page goes live.</p>
+    </div>
+    <div class="quote-grid">
+      <div class="quote reveal">
+        <div class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+        </div>
+        <blockquote>They located a debtor we had written off two years earlier. Clear reporting, quick turnaround and the file was recovered within the month.</blockquote>
+        <div class="quote-by">
+          <div class="avatar">JM</div>
+          <div><strong>Client Name</strong><span>Credit Manager, Finance</span></div>
+        </div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+        </div>
+        <blockquote>Documents served on a difficult recipient after two other firms failed. The affidavit came back the same week and held up without issue.</blockquote>
+        <div class="quote-by">
+          <div class="avatar">SR</div>
+          <div><strong>Client Name</strong><span>Principal, Law Firm</span></div>
+        </div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9Z"/></svg>
+        </div>
+        <blockquote>We send bulk ledgers every month. The hit rate is strong, the reporting is consistent and the team actually answers the phone.</blockquote>
+        <div class="quote-by">
+          <div class="avatar">DK</div>
+          <div><strong>Client Name</strong><span>Operations, Lender</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="faq-wrap">
+      <div class="reveal">
+        <span class="eyebrow">Common Questions</span>
+        <h2>Answers Before You Book</h2>
+        <p>If your question is not covered here, call us on <a href="tel:0755188460" style="color:var(--primary);font-weight:600">07 5518 8460</a> and speak with someone who works on these files every day.</p>
+        <div class="hero-cta" style="margin-bottom:0;margin-top:24px">
+          <a href="#contact" class="btn btn--primary">Ask A Question</a>
+        </div>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">How long does a skiptrace take?
+            <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a"><p>Turnaround depends on the depth of the search. A straightforward address verification is usually far quicker than an in depth investigation on a subject who is deliberately keeping a low profile. We will give you a realistic timeframe when we quote your file.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you cover all of Australia?
+            <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a"><p>Yes. We have head offices on the Gold Coast in Queensland and in Adelaide, South Australia, with a field network covering metropolitan and remote areas nationally. We also work with international partners when a subject has left the country.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is skiptracing legal?
+            <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a"><p>It is, when it is done properly. Our work relies on lawful sources, licensed agents and strict compliance with privacy and credit legislation, including the National Credit Code where it applies.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can you handle bulk files?
+            <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a"><p>Absolutely. High volume skiptracing is one of our specialities. Send us your ledger and we will scope the work, agree pricing and return results in a structured format that drops straight back into your system.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What does it cost?
+            <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a"><p>Pricing depends on the service and the complexity of the matter. Send through the details using the form on this page and we will come back with a clear, itemised quote with no hidden extras.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BAND
+     ============================================================ -->
+<section class="section--tight cta-band">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2>Schedule A Complimentary Consultation Today</h2>
+        <p>Speak with our friendly team on 07 5518 8460 if you have questions or need clarification.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:0755188460" class="btn btn--white btn--lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+          Call Now
+        </a>
+        <a href="#contact" class="btn btn--ghost btn--lg">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT  |  contact info + google map + form (above footer)
+     ============================================================ -->
+<section class="section section--alt" id="contact">
+  <div class="container">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Reach Out To Us Today</h2>
+      <p>Send us the details of your matter and our team will respond with a clear plan and an obligation free quote.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="reveal">
+        <h3>Contact Information</h3>
+        <p>Our lines are open during business hours and every enquiry is handled by a real person, not an automated queue.</p>
+
+        <div class="info-list">
+          <a class="info-item" href="tel:0755188460">
+            <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg></span>
+            <div class="info-text">
+              <h4>Phone</h4>
+              <span class="val">07 5518 8460</span>
+              <span class="sub">Monday to Friday, business hours AEST</span>
+            </div>
+          </a>
+
+          <a class="info-item" href="mailto:admin@irsgroup.com.au">
+            <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+            <div class="info-text">
+              <h4>Email</h4>
+              <span class="val">admin@irsgroup.com.au</span>
+              <span class="sub">We reply to every enquiry we receive</span>
+            </div>
+          </a>
+
+          <div class="info-item">
+            <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z"/><circle cx="12" cy="11" r="3"/></svg></span>
+            <div class="info-text">
+              <h4>Offices</h4>
+              <span class="val">Gold Coast QLD and Adelaide SA</span>
+              <span class="sub">Field agents operating Australia wide</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=Gold%20Coast%20QLD%20Australia&output=embed"
+            title="IRS Group office location on Google Maps"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal">
+        <h3>Send An Enquiry</h3>
+        <p class="form-sub" style="margin-bottom:24px">Fields marked with an asterisk are required.</p>
+        <div class="form-success" id="contactSuccess">Thank you. Your enquiry has been received and our team will be in touch shortly.</div>
+        <form class="form-grid" id="contactForm" novalidate>
+          <div class="field">
+            <label for="c-name">Name <span class="req">*</span></label>
+            <input type="text" id="c-name" name="name" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label for="c-company">Company</label>
+            <input type="text" id="c-company" name="company" placeholder="Business name">
+          </div>
+          <div class="field">
+            <label for="c-email">Email <span class="req">*</span></label>
+            <input type="email" id="c-email" name="email" placeholder="you@company.com.au" required>
+          </div>
+          <div class="field">
+            <label for="c-phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="c-phone" name="phone" placeholder="04XX XXX XXX" required>
+          </div>
+          <div class="field field--full">
+            <label for="c-service">Service required <span class="req">*</span></label>
+            <select id="c-service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Skiptracing Services</option>
+              <option>Skiptracing Locates</option>
+              <option>Searches</option>
+              <option>Investigations, In Depth Locations</option>
+              <option>International Skiptracing</option>
+              <option>High Volume Skiptracing</option>
+              <option>Process Serving</option>
+              <option>Field Calls</option>
+              <option>Repossessions</option>
+              <option>Lockouts and Evictions</option>
+              <option>Debt Collection</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="c-msg">Your message</label>
+            <textarea id="c-msg" name="message" placeholder="Tell us about the matter, including any details that may help us quote accurately"></textarea>
+          </div>
+          <div class="field field--full">
+            <label class="consent">
+              <input type="checkbox" name="consent" required>
+              <span>I agree to IRS Group contacting me about my enquiry and accept the privacy policy.</span>
+            </label>
+          </div>
+          <div class="field field--full">
+            <button type="submit" class="btn btn--primary btn--block btn--lg">Submit Enquiry</button>
+          </div>
+        </form>
+        <p class="form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Your details stay confidential and are never shared
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     GLOBAL FOOTER  (will live in the WordPress global footer)
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <img class="footer-logo" src="https://www.irsgroup.com.au/wp-content/uploads/2025/06/footer-logo.png" alt="IRS Group">
+        <p>IRS Group has head offices in Adelaide, South Australia and the Gold Coast, Queensland, with licensed field agents operating Australia wide.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/irsgroupaus" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/ir.solutions/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/international-recovery-solutions-pty-ltd-irs-/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H4v11.6h2.9V8.5ZM5.4 3.9a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM20 13.7c0-3.1-1.7-4.6-3.9-4.6-1.8 0-2.6 1-3 1.7V8.5H10v11.6h2.9v-6.5c0-1.4.9-2.1 1.9-2.1s1.7.6 1.7 2.1v6.5H20v-6.4Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Home</a></li>
+          <li><a href="/book-now/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Book Now</a></li>
+          <li><a href="/skiptracing-services/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Skiptracing Services</a></li>
+          <li><a href="/field-services/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Field Services</a></li>
+          <li><a href="/debt-collections/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Debt Collection</a></li>
+          <li><a href="/who-we-are/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="/skiptracing-locates/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Skiptracing Locates</a></li>
+          <li><a href="/skip-trace-search/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Searches</a></li>
+          <li><a href="/process-serving/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Process Serving</a></li>
+          <li><a href="/field-calls/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Field Calls</a></li>
+          <li><a href="/repossessions/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Repossessions</a></li>
+          <li><a href="/lockouts-evictions/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>Lockouts and Evictions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Information</h4>
+        <div class="footer-contact">
+          <a href="tel:0755188460">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+            <span>07 5518 8460</span>
+          </a>
+          <a href="mailto:admin@irsgroup.com.au">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            <span>admin@irsgroup.com.au</span>
+          </a>
+          <div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z"/><circle cx="12" cy="11" r="3"/></svg>
+            <span>Gold Coast, Queensland<br>Adelaide, South Australia</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>Copyright &copy; <span id="year">2026</span> IRS Group. All Rights Reserved.</span>
+      <span>Designed by <a href="https://www.digitalmovement.com.au/" target="_blank" rel="noopener">Digital Movement</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating call now button, mobile only -->
+<a href="tel:0755188460" class="call-float" aria-label="Call IRS Group now">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg>
+  Call Now
+</a>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Sticky header state */
+  var header = document.getElementById('siteHeader');
+  var onScroll = function () {
+    header.classList.toggle('is-stuck', window.scrollY > 20);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile drawer */
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+  var drawerClose = document.getElementById('drawerClose');
+
+  function setDrawer(open) {
+    drawer.classList.toggle('is-open', open);
+    burger.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function () {
+    setDrawer(!drawer.classList.contains('is-open'));
+  });
+  drawerClose.addEventListener('click', function () { setDrawer(false); });
+  drawer.addEventListener('click', function (e) {
+    if (e.target === drawer) setDrawer(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setDrawer(false);
+  });
+  drawer.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setDrawer(false); });
+  });
+
+  /* Mobile submenu accordions */
+  drawer.querySelectorAll('button.m-link').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      var panel = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.style.maxHeight = open ? null : panel.scrollHeight + 'px';
+    });
+  });
+
+  /* Service tabs */
+  var tabs = document.getElementById('tabs');
+  if (tabs) {
+    tabs.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tabs.querySelectorAll('.tab-btn').forEach(function (b) {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        tabs.querySelectorAll('.tab-panel').forEach(function (p) {
+          p.classList.remove('is-active');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(btn.getAttribute('aria-controls')).classList.add('is-active');
+      });
+    });
+  }
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(function (q) {
+    q.addEventListener('click', function () {
+      var item = q.parentElement;
+      var panel = q.nextElementSibling;
+      var isOpen = item.classList.contains('is-open');
+
+      document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
+        openItem.classList.remove('is-open');
+        openItem.querySelector('.faq-a').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add('is-open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* Reveal on scroll */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(function (el, i) {
+      el.style.transitionDelay = (i % 4) * 70 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* Demo form handling. Swap for Contact Form 7 or Gravity Forms in WordPress. */
+  function wireForm(formId, successId) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      document.getElementById(successId).classList.add('is-visible');
+      form.reset();
+    });
+  }
+  wireForm('heroForm', 'heroSuccess');
+  wireForm('contactForm', 'contactSuccess');
+
+  /* Footer year */
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
