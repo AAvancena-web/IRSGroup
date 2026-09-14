@@ -16,10 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Build a field array with a deterministic key.
  *
- * @param string $name  Field name.
+ * The key is always derived from $name so it stays unique across the theme.
+ * Sub fields of a repeater must therefore pass an explicit short 'name' in
+ * $extra, because that is the array key the seeder and templates read.
+ *
+ * @param string $name  Unique field slug, used for the key and the default name.
  * @param string $label Field label.
  * @param string $type  Field type.
- * @param array  $extra Extra field settings.
+ * @param array  $extra Extra field settings. Pass 'name' to override the name.
  * @return array
  */
 function irs_acf_field( $name, $label, $type = 'text', $extra = array() ) {
@@ -50,13 +54,14 @@ function irs_acf_button_repeater( $name, $label ) {
 			'layout'       => 'table',
 			'button_label' => __( 'Add button', 'siteorigin-corp' ),
 			'sub_fields'   => array(
-				irs_acf_field( $name . '_label', __( 'Label', 'siteorigin-corp' ), 'text' ),
-				irs_acf_field( $name . '_url', __( 'URL', 'siteorigin-corp' ), 'text' ),
+				irs_acf_field( $name . '_label', __( 'Label', 'siteorigin-corp' ), 'text', array( 'name' => 'label' ) ),
+				irs_acf_field( $name . '_url', __( 'URL', 'siteorigin-corp' ), 'text', array( 'name' => 'url' ) ),
 				irs_acf_field(
 					$name . '_style',
 					__( 'Style', 'siteorigin-corp' ),
 					'select',
 					array(
+						'name'          => 'style',
 						'choices'       => array(
 							'primary' => 'Primary (orange)',
 							'ghost'   => 'Secondary (white, for dark backgrounds)',
@@ -86,7 +91,7 @@ function irs_acf_text_repeater( $name, $label, $sub = 'Text' ) {
 		array(
 			'layout'       => 'table',
 			'button_label' => __( 'Add row', 'siteorigin-corp' ),
-			'sub_fields'   => array( irs_acf_field( $name . '_text', $sub, 'text' ) ),
+			'sub_fields'   => array( irs_acf_field( $name . '_text', $sub, 'text', array( 'name' => 'text' ) ) ),
 		)
 	);
 }
@@ -143,8 +148,8 @@ function irs_register_acf_fields() {
 					array(
 						'layout'     => 'table',
 						'sub_fields' => array(
-							irs_acf_field( 'social_network', __( 'Network', 'siteorigin-corp' ), 'select', array( 'choices' => array( 'facebook' => 'Facebook', 'instagram' => 'Instagram', 'linkedin' => 'LinkedIn' ) ) ),
-							irs_acf_field( 'social_url', __( 'URL', 'siteorigin-corp' ), 'text' ),
+							irs_acf_field( 'social_network', __( 'Network', 'siteorigin-corp' ), 'select', array( 'name' => 'network', 'choices' => array( 'facebook' => 'Facebook', 'instagram' => 'Instagram', 'linkedin' => 'LinkedIn' ) ) ),
+							irs_acf_field( 'social_url', __( 'URL', 'siteorigin-corp' ), 'text', array( 'name' => 'url' ) ),
 						),
 					)
 				),
@@ -180,8 +185,8 @@ function irs_register_acf_fields() {
 					array(
 						'layout'     => 'table',
 						'sub_fields' => array(
-							irs_acf_field( 'stats_number', __( 'Figure', 'siteorigin-corp' ), 'text', array( 'instructions' => __( 'Digits animate on scroll. A suffix such as + is kept.', 'siteorigin-corp' ) ) ),
-							irs_acf_field( 'stats_label', __( 'Label', 'siteorigin-corp' ), 'text' ),
+							irs_acf_field( 'stats_number', __( 'Figure', 'siteorigin-corp' ), 'text', array( 'name' => 'number', 'instructions' => __( 'Digits animate on scroll. A suffix such as + is kept.', 'siteorigin-corp' ) ) ),
+							irs_acf_field( 'stats_label', __( 'Label', 'siteorigin-corp' ), 'text', array( 'name' => 'label' ) ),
 						),
 					)
 				),
@@ -199,8 +204,8 @@ function irs_register_acf_fields() {
 						'button_label' => __( 'Add service', 'siteorigin-corp' ),
 						'instructions' => __( 'Ten cards fill two even rows of five on desktop.', 'siteorigin-corp' ),
 						'sub_fields'   => array(
-							irs_acf_field( 'services_image', __( 'Image', 'siteorigin-corp' ), 'image', array( 'return_format' => 'array' ) ),
-							irs_acf_field( 'services_tag', __( 'Category chip', 'siteorigin-corp' ), 'text' ),
+							irs_acf_field( 'services_image', __( 'Image', 'siteorigin-corp' ), 'image', array( 'name' => 'image', 'return_format' => 'array' ) ),
+							irs_acf_field( 'services_tag', __( 'Category chip', 'siteorigin-corp' ), 'text', array( 'name' => 'tag' ) ),
 							irs_acf_field( 'services_title_row', __( 'Title', 'siteorigin-corp' ), 'text', array( 'name' => 'title' ) ),
 							irs_acf_field( 'services_text', __( 'Short description', 'siteorigin-corp' ), 'textarea', array( 'rows' => 3, 'name' => 'text' ) ),
 							irs_acf_field( 'services_url', __( 'Link', 'siteorigin-corp' ), 'text', array( 'name' => 'url' ) ),

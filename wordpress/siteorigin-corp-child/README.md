@@ -66,6 +66,22 @@ inner page content would lose its max width.
 Re-run the seeder at any time with `/wp-admin/?irs_reseed=1` (administrators
 only). That pass overwrites existing values; the automatic first run does not.
 
+### If you seeded before 2026-09-14
+
+An earlier build named repeater sub fields after their unique key rather than
+the short name the seeder and templates use, so repeater rows were created with
+the right row count but no values. Six repeaters were affected: trust points,
+stats, service cards (image and category chip), social links, and both button
+groups.
+
+Fixed. To pick up the values, visit **`/wp-admin/?irs_reseed=1`** once. The
+empty rows are replaced. Any leftover meta from the old sub field names is
+unused and harmless.
+
+`inc/irs-acf-fields.php` now documents the trap on `irs_acf_field()`: the key is
+derived from the slug so it stays unique, so every repeater sub field must pass
+an explicit short `'name'`.
+
 ## Field reference
 
 * **IRS Global** (options page): phone, email, logos, top bar, header button,
