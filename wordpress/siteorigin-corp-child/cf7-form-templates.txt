@@ -1,0 +1,50 @@
+CONTACT FORM 7 TEMPLATES
+========================
+
+Paste these into Contact > Contact Forms. The redesign styles CF7 output through
+the .irs-cf7 wrapper, so the only requirement is the .contact-form > .form-grid >
+.get structure below, which matches the markup the existing forms already use.
+
+-------------------------------------------------------------------
+1. BANNER FORM  (homepage hero + every inner page banner)
+   Put its shortcode in: IRS Global > Banner form > Contact Form 7 shortcode
+-------------------------------------------------------------------
+
+<div class="contact-form">
+<div class="form-grid">
+  <div class="get">[text* Name placeholder "Full name"]</div>
+  <div class="get">[email* EmailAddress placeholder "you@company.com.au"]</div>
+  <div class="get">[tel* PhoneNumber placeholder "04XX XXX XXX"]</div>
+  <div class="get">[select* Service "Select a service" "Skiptracing Services" "Skiptracing Locates" "Searches" "Investigations, In Depth Locations" "International Skiptracing" "High Volume Skiptracing" "Process Serving" "Field Calls" "Repossessions" "Lockouts and Evictions" "Debt Collection"]</div>
+  <div class="get">[textarea YourMessage placeholder "Give us a short summary of your matter"]</div>
+  <div class="get">[acceptance consent] I agree to IRS Group contacting me about my enquiry and accept the privacy policy. [/acceptance]</div>
+  <div class="get">[submit "Send My Enquiry"]</div>
+</div>
+</div>
+
+-------------------------------------------------------------------
+2. CONTACT SECTION FORM  (homepage, above the footer)
+   Put its shortcode in: IRS Global > Footer > Contact section form shortcode
+-------------------------------------------------------------------
+
+<div class="contact-form">
+<div class="form-grid">
+  <div class="get">[text* Name placeholder "Full name"]</div>
+  <div class="get">[text Company placeholder "Business name"]</div>
+  <div class="get">[email* EmailAddress placeholder "you@company.com.au"]</div>
+  <div class="get">[tel* PhoneNumber placeholder "04XX XXX XXX"]</div>
+  <div class="get">[select* Service "Select a service" "Skiptracing Services" "Skiptracing Locates" "Searches" "Investigations, In Depth Locations" "International Skiptracing" "High Volume Skiptracing" "Process Serving" "Field Calls" "Repossessions" "Lockouts and Evictions" "Debt Collection"]</div>
+  <div class="get">[textarea YourMessage placeholder "Tell us about the matter"]</div>
+  <div class="get">[acceptance consent] I agree to IRS Group contacting me about my enquiry and accept the privacy policy. [/acceptance]</div>
+  <div class="get">[submit "Submit Enquiry"]</div>
+</div>
+</div>
+
+NOTES
+-----
+* Fields sit two per row. Any .get containing a textarea, an acceptance
+  checkbox or the submit button automatically spans the full width.
+* Keep field names unchanged if you want the existing mail templates and the
+  /thank-you/ redirect (still wired in footer.php) to keep working.
+* [tel] is used rather than [number] so mobile keyboards show a phone pad and
+  leading zeros are preserved.

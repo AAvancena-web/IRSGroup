@@ -1,0 +1,750 @@
+/* IRS Group redesign. Generated from the static build.
+   All selectors are irs- prefixed and all lengths are px, because the live
+   child theme sets a fluid html font-size and broad body h1/h2/p rules. */
+
+/* ============================================================
+   IRS GROUP  |  Homepage redesign
+   Tokens
+   ============================================================ */
+:root{
+  --primary:#f79521;
+  --secondary:#828486;
+  --muted:#606a75;      /* accessible text shade of --secondary */
+  --blue:#28ace2;
+
+  --primary-dark:#d97c0c;
+  --primary-light:#ffd18a;
+  --primary-soft:rgba(247,149,33,.12);
+  --blue-dark:#1d8ab8;
+  --blue-soft:rgba(40,172,226,.12);
+
+  --ink:#0e141b;
+  --ink-2:#16202b;
+  --ink-3:#1f2c3a;
+  --body:#4b5663;
+  --heading:#101820;
+  --line:#e4e8ed;
+  --surface:#ffffff;
+  --surface-2:#f5f7fa;
+  --surface-3:#eef2f6;
+  --surface-tint:#eef6fb;   /* soft blue band */
+
+  --radius-sm:10px;
+  --radius:16px;
+  --radius-lg:24px;
+  --shadow-sm:0 2px 8px rgba(16,24,32,.06);
+  --shadow:0 12px 32px rgba(16,24,32,.10);
+  --shadow-lg:0 28px 70px rgba(16,24,32,.18);
+
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-head:'Plus Jakarta Sans','Inter',system-ui,sans-serif;
+
+  --container:1440px;
+  --gutter:28px;
+  --header-h:92px;
+  --ease:cubic-bezier(.22,.75,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.75;
+  color:var(--body);
+  background:var(--surface);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+button,input,select,textarea{font:inherit;color:inherit;}
+ul{margin:0;padding:0;list-style:none;}
+
+h1,h2,h3,h4,h5{
+  font-family:var(--font-head);
+  color:var(--heading);
+  margin:0 0 .6em;
+  line-height:1.14;
+  letter-spacing:-.02em;
+  font-weight:800;
+}
+h1{font-size:clamp(37.6px,4.2vw,66.4px);}
+h2{font-size:clamp(31.2px,3vw,48px);}
+h3{font-size:clamp(21.6px,1.8vw,29.6px);}
+h4{font-size:clamp(17.6px,1.3vw,20.8px);font-weight:700;}
+p{margin:0 0 1.1em;}
+p:last-child{margin-bottom:0;}
+
+/* ---------- Layout ---------- */
+.irs-container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+@media (min-width:1800px){
+  :root{--container:1880px;--gutter:40px;}
+}
+.irs-section{padding:clamp(76px,7.5vw,144px) 0;}
+[id]{scroll-margin-top:calc(var(--header-h) + 16px);}
+.irs-section--tight{padding:clamp(60px,5.5vw,100px) 0;}
+.irs-section--alt{background:var(--surface-2);}
+.irs-section--tint{background:var(--surface-tint);}
+.irs-section--dark{background:var(--ink);color:rgba(255,255,255,.76);}
+.irs-section--dark h2,.irs-section--dark h3,.irs-section--dark h4{color:#fff;}
+
+/* Centered headers deliberately carry no max-width */
+.irs-sec-head{margin-bottom:clamp(46px,4.6vw,76px);}
+.irs-sec-head--center{text-align:center;}
+.irs-sec-head p{font-size:17.44px;line-height:1.8;}
+.irs-sec-head--center p{margin-inline:0;}
+
+.irs-eyebrow{
+  display:inline-flex;align-items:center;
+  font-family:var(--font-head);
+  font-size:12.48px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--primary);margin-bottom:18px;
+}
+.irs-section--dark .irs-eyebrow{color:var(--primary);}
+
+/* ---------- Buttons ---------- */
+.irs-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  font-family:var(--font-head);font-weight:700;font-size:15.2px;
+  letter-spacing:.02em;text-transform:uppercase;
+  padding:17px 30px;border-radius:12px;border:2px solid transparent;
+  cursor:pointer;transition:all .25s var(--ease);white-space:nowrap;
+}
+.irs-btn svg{width:18px;height:18px;flex:none;}
+.irs-btn--primary{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 10px 26px rgba(247,149,33,.32);}
+.irs-btn--primary:hover{background:var(--primary-dark);border-color:var(--primary-dark);transform:translateY(-2px);box-shadow:0 16px 34px rgba(247,149,33,.42);}
+.irs-btn--blue{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 10px 26px rgba(40,172,226,.3);}
+.irs-btn--blue:hover{background:var(--blue-dark);border-color:var(--blue-dark);transform:translateY(-2px);}
+.irs-btn--ghost{background:#fff;border-color:#fff;color:var(--heading);box-shadow:0 8px 22px rgba(0,0,0,.18);}
+.irs-btn--ghost:hover{background:var(--surface-2);border-color:var(--surface-2);color:var(--primary);transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.26);}
+.irs-btn--outline{background:#fff;border-color:var(--line);color:var(--heading);box-shadow:var(--shadow-sm);}
+.irs-btn--outline:hover{border-color:var(--primary);color:var(--primary);background:#fff;transform:translateY(-2px);box-shadow:var(--shadow);}
+.irs-btn--block{width:100%;white-space:normal;text-align:center;line-height:1.35;}
+.irs-btn--lg{padding:20px 36px;font-size:16px;}
+
+/* ---------- Attention CTA: breathing glow + sheen sweep ---------- */
+.irs-btn--glow{
+  position:relative;overflow:hidden;
+  --glow:247,149,33;
+  animation:irs-ctaPulse 2.6s ease-in-out infinite;
+}
+.irs-btn--blue.irs-btn--glow,.irs-btn--glow.irs-is-blue{--glow:40,172,226;}
+.irs-btn--white.irs-btn--glow{--glow:255,255,255;}
+/* light sweep across the face, then a pause before the next pass */
+.irs-btn--glow::after{
+  content:"";position:absolute;top:-60%;left:-80%;
+  width:42%;height:220%;pointer-events:none;
+  background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.48),rgba(255,255,255,0));
+  transform:skewX(-22deg);
+  animation:irs-ctaSheen 3.9s ease-in-out infinite;
+}
+@keyframes irs-ctaPulse{
+  0%,100%{box-shadow:0 10px 26px rgba(var(--glow),.36), 0 0 0 0 rgba(var(--glow),.5);}
+  50%    {box-shadow:0 16px 40px rgba(var(--glow),.62), 0 0 0 15px rgba(var(--glow),0);}
+}
+@keyframes irs-ctaSheen{
+  0%,58%{left:-80%;}
+  100%  {left:135%;}
+}
+/* settle the pulse on hover so the lift reads as the response */
+.irs-btn--glow:hover{animation-play-state:paused;}
+
+/* ---------- Section closing CTA ---------- */
+.irs-section-cta{
+  margin-top:clamp(46px,4.2vw,74px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:14px;text-align:center;
+}
+.irs-section-cta-text{
+  width:100%;margin:0 0 4px;
+  font-family:var(--font-head);font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(17.28px,1.45vw,22.4px);color:var(--heading);
+}
+.irs-section--dark .irs-section-cta-text{color:#fff;}
+@media (max-width:560px){
+  .irs-section-cta .irs-btn{width:100%;}
+}
+
+.irs-link-arrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-head);font-weight:700;font-size:14.72px;
+  color:var(--blue);text-transform:uppercase;letter-spacing:.06em;
+}
+.irs-link-arrow svg{width:16px;height:16px;transition:transform .25s var(--ease);}
+.irs-link-arrow:hover svg{transform:translateX(5px);}
+
+/* ---------- Top bar ---------- */
+.irs-topbar{background:var(--blue);color:#fff;font-size:14.72px;}
+.irs-topbar .irs-container{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:46px;}
+.irs-topbar-note{display:flex;align-items:center;gap:9px;font-weight:500;opacity:.95;}
+.irs-topbar-note svg{width:16px;height:16px;flex:none;}
+.irs-topbar-links{display:flex;align-items:center;gap:28px;}
+.irs-topbar-links a{display:inline-flex;align-items:center;gap:9px;font-weight:600;transition:opacity .2s;}
+.irs-topbar-links a:hover{opacity:.8;}
+.irs-topbar-links svg{width:16px;height:16px;flex:none;}
+@media (max-width:900px){.irs-topbar{display:none;}}
+
+/* ---------- Header ---------- */
+.irs-site-header{
+  position:sticky;top:0;z-index:900;background:#fff;
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .3s var(--ease),padding .3s var(--ease);
+}
+.irs-site-header.irs-is-stuck{box-shadow:0 10px 30px rgba(16,24,32,.09);}
+.irs-header-inner{display:flex;align-items:center;gap:26px;min-height:var(--header-h);transition:min-height .3s var(--ease);}
+.irs-site-header.irs-is-stuck .irs-header-inner{min-height:74px;}
+.irs-brand{display:flex;align-items:center;flex:none;}
+.irs-brand img{width:82px;transition:width .3s var(--ease);}
+.irs-site-header.irs-is-stuck .irs-brand img{width:66px;}
+
+.irs-main-nav{margin-left:auto;}
+.irs-nav-list{display:flex;align-items:center;gap:4px;}
+.irs-nav-item{position:relative;}
+.irs-nav-link{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--font-head);font-weight:700;font-size:13.92px;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--heading);
+  padding:12px 14px;border-radius:9px;transition:color .2s,background .2s;
+}
+.irs-nav-link .irs-caret{width:11px;height:11px;transition:transform .25s var(--ease);opacity:.55;}
+.irs-nav-item:hover>.irs-nav-link,.irs-nav-link.irs-is-active{color:var(--primary);background:var(--primary-soft);}
+.irs-nav-item:hover .irs-caret{transform:rotate(180deg);}
+.irs-submenu{
+  position:absolute;top:calc(100% + 10px);left:0;min-width:266px;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);padding:8px;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:all .24s var(--ease);
+}
+.irs-submenu::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px;}
+.irs-nav-item:hover .irs-submenu{opacity:1;visibility:visible;transform:translateY(0);}
+.irs-submenu a{
+  display:block;padding:11px 15px;border-radius:9px;
+  font-size:15.04px;font-weight:500;color:var(--body);transition:all .18s;
+}
+.irs-submenu a:hover{background:var(--surface-2);color:var(--primary);padding-left:19px;}
+
+.irs-header-actions{display:flex;align-items:center;gap:14px;flex:none;}
+/* Circular phone button with dark background, sits left of the hamburger */
+.irs-phone-circle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--ink);color:#fff;
+  flex:none;transition:all .25s var(--ease);
+}
+.irs-phone-circle svg{width:21px;height:21px;}
+.irs-phone-circle:hover{background:var(--primary);border-color:var(--primary);transform:translateY(-2px) rotate(-8deg);}
+
+.irs-burger{
+  display:none;align-items:center;justify-content:center;flex-direction:column;gap:6px;
+  width:52px;height:52px;border-radius:13px;border:2px solid var(--line);
+  background:#fff;cursor:pointer;padding:0;transition:all .25s var(--ease);
+}
+.irs-burger span{display:block;width:23px;height:2.5px;border-radius:3px;background:var(--ink);transition:all .3s var(--ease);}
+.irs-burger.irs-is-open{border-color:var(--primary);background:var(--primary);}
+.irs-burger.irs-is-open span{background:#fff;}
+.irs-burger.irs-is-open span:nth-child(1){transform:translateY(8.5px) rotate(45deg);}
+.irs-burger.irs-is-open span:nth-child(2){opacity:0;transform:scaleX(.4);}
+.irs-burger.irs-is-open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg);}
+
+@media (max-width:1180px){
+  .irs-nav-link{font-size:12.8px;padding:11px 9px;}
+  .irs-brand img{width:70px;}
+}
+@media (max-width:1024px){
+  :root{--header-h:76px;}
+  .irs-main-nav,.irs-header-actions .irs-btn{display:none;}
+  .irs-burger{display:inline-flex;}
+  .irs-header-actions{margin-left:auto;}
+}
+
+/* ---------- Mobile drawer ---------- */
+.irs-drawer{
+  position:fixed;inset:0;z-index:950;overflow:hidden;
+  background:rgba(14,20,27,.55);backdrop-filter:blur(4px);
+  opacity:0;visibility:hidden;transition:all .3s var(--ease);
+}
+.irs-drawer.irs-is-open{opacity:1;visibility:visible;}
+.irs-drawer-panel{
+  position:absolute;top:0;right:0;height:100%;width:min(420px,88vw);
+  background:#fff;padding:26px 24px 120px;overflow-y:auto;
+  transform:translateX(100%);transition:transform .36s var(--ease);
+}
+.irs-drawer.irs-is-open .irs-drawer-panel{transform:translateX(0);}
+.irs-drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+.irs-drawer-head img{width:62px;}
+.irs-drawer-close{
+  width:44px;height:44px;border-radius:11px;border:2px solid var(--line);
+  background:#fff;cursor:pointer;font-size:24px;line-height:1;color:var(--heading);
+}
+.irs-m-nav>li{border-bottom:1px solid var(--line);}
+.irs-m-link{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  width:100%;padding:16px 2px;background:none;border:0;text-align:left;cursor:pointer;
+  font-family:var(--font-head);font-weight:700;font-size:16px;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--heading);
+}
+.irs-m-link svg{width:14px;height:14px;opacity:.5;transition:transform .25s var(--ease);}
+.irs-m-link[aria-expanded="true"] svg{transform:rotate(180deg);color:var(--primary);}
+.irs-m-sub{max-height:0;overflow:hidden;transition:max-height .32s var(--ease);}
+.irs-m-sub a{display:block;padding:11px 0 11px 16px;font-size:15.36px;color:var(--body);border-left:2px solid var(--line);margin-left:2px;}
+.irs-m-sub a:hover{color:var(--primary);border-color:var(--primary);}
+.irs-m-sub li:last-child a{margin-bottom:12px;}
+.irs-drawer-cta{display:grid;gap:12px;margin-top:26px;}
+.irs-drawer-contact{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:grid;gap:14px;}
+.irs-drawer-contact a{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--heading);}
+.irs-drawer-contact svg{width:18px;height:18px;color:var(--primary);flex:none;}
+
+/* ---------- Hero ---------- */
+.irs-hero{
+  position:relative;overflow:hidden;
+  background:var(--blue);color:rgba(255,255,255,.88);
+  padding:clamp(64px,6.5vw,112px) 0 clamp(120px,11vw,190px);
+}
+.irs-hero-bg{position:absolute;left:0;top:-12%;object-fit:cover;object-position:left center;width:100%;height:124%;will-change:translate;}
+/* Directional scrim: darkens the blue behind the copy, leaves the orange
+   arc clean behind the form card on the right. */
+.irs-hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(96deg,
+    rgba(4,20,34,.92) 0%,
+    rgba(4,20,34,.88) 24%,
+    rgba(4,20,34,.74) 38%,
+    rgba(4,20,34,.44) 50%,
+    rgba(4,20,34,.14) 60%,
+    rgba(4,20,34,0) 70%);
+}
+.irs-hero .irs-container{position:relative;z-index:2;}
+.irs-hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:clamp(36px,4vw,80px);align-items:center;}
+
+.irs-hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  padding:9px 18px;border-radius:100px;
+  font-family:var(--font-head);font-size:12.8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:26px;
+}
+.irs-hero-badge .irs-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 4px rgba(247,149,33,.25);}
+.irs-hero h1{color:#fff;margin-bottom:24px;}
+.irs-hero h1 .irs-hl{color:var(--primary-light);}
+.irs-hero-lead{font-size:clamp(16.96px,1.25vw,20.48px);color:rgba(255,255,255,.8);max-width:44em;margin-bottom:34px;}
+.irs-hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px;}
+
+.irs-hero-points{display:flex;flex-wrap:wrap;gap:14px 30px;}
+.irs-hero-points li{display:flex;align-items:center;gap:11px;font-weight:600;color:#fff;font-size:15.52px;}
+.irs-hero-points svg{width:20px;height:20px;color:var(--primary);flex:none;}
+
+/* ---------- Form card ---------- */
+.irs-form-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:clamp(28px,2.4vw,40px);box-shadow:var(--shadow-lg);
+  border-top:5px solid var(--primary);
+}
+.irs-form-card h2{font-size:clamp(24px,1.9vw,31.2px);margin-bottom:6px;}
+.irs-form-card .irs-form-sub{color:var(--muted);font-size:15.52px;margin-bottom:24px;}
+.irs-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.irs-field{display:flex;flex-direction:column;gap:7px;}
+.irs-field--full{grid-column:1/-1;}
+.irs-field label{
+  font-family:var(--font-head);font-size:12.48px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--heading);
+}
+.irs-field label .irs-req{color:var(--primary);}
+.irs-field input,.irs-field select,.irs-field textarea{
+  width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:11px;
+  background:var(--surface-2);font-size:16px;color:var(--heading);
+  transition:border-color .2s,background .2s,box-shadow .2s;
+}
+.irs-field textarea{resize:vertical;min-height:104px;}
+.irs-field input::placeholder,.irs-field textarea::placeholder{color:#a2abb5;}
+.irs-field input:focus,.irs-field select:focus,.irs-field textarea:focus{
+  outline:none;border-color:var(--primary);background:#fff;
+  box-shadow:0 0 0 4px var(--primary-soft);
+}
+.irs-field select{
+  appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23828486' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;background-size:17px;padding-right:44px;
+}
+.irs-consent{display:flex;gap:11px;align-items:flex-start;font-family:var(--font-body);font-size:13.92px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted);line-height:1.55;cursor:pointer;}
+.irs-consent input{width:19px;height:19px;margin-top:2px;accent-color:var(--primary);flex:none;}
+.irs-form-note{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin-top:16px;font-size:13.6px;color:var(--muted);text-align:center;
+}
+.irs-form-note svg{width:15px;height:15px;color:var(--blue);flex:none;}
+.irs-form-success{
+  display:none;background:var(--blue-soft);border:1.5px solid var(--blue);
+  color:#14618a;border-radius:12px;padding:14px 16px;font-size:15.04px;font-weight:600;margin-bottom:16px;
+}
+.irs-form-success.irs-is-visible{display:block;}
+
+@media (max-width:980px){
+  .irs-hero-grid{grid-template-columns:1fr;}
+  .irs-hero-lead{max-width:none;}
+  .irs-hero::after{background:linear-gradient(180deg,rgba(5,15,25,.86),rgba(5,15,25,.76));}
+  .irs-hero{padding-bottom:clamp(96px,16vw,140px);}
+}
+@media (max-width:560px){
+  .irs-form-grid{grid-template-columns:1fr;}
+  .irs-hero-cta .irs-btn{width:100%;}
+}
+
+/* ---------- Stats ---------- */
+.irs-stats{position:relative;background:var(--surface-2);padding:0 0 clamp(8px,1vw,16px);}
+.irs-stats .irs-container{position:relative;z-index:5;margin-top:calc(-1 * clamp(60px,6vw,96px));}
+.irs-stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:#fff;border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.irs-stat{
+  padding:clamp(30px,3vw,46px) clamp(16px,1.8vw,30px);
+  border-right:1px solid var(--line);text-align:center;
+  transition:background .3s var(--ease);
+}
+.irs-stat:last-child{border-right:0;}
+.irs-stat:hover{background:var(--surface-2);}
+.irs-stat-num{
+  font-family:var(--font-head);font-weight:800;color:var(--primary);
+  font-size:clamp(33.6px,3.2vw,49.6px);line-height:1;margin-bottom:10px;letter-spacing:-.03em;
+}
+.irs-stat-label{color:var(--muted);font-size:15.04px;font-weight:500;line-height:1.5;}
+@media (max-width:820px){
+  .irs-stats-grid{grid-template-columns:1fr 1fr;}
+  .irs-stat:nth-child(2){border-right:0;}
+  .irs-stat:nth-child(-n+2){border-bottom:1px solid var(--line);}
+}
+
+/* ---------- Service cards ---------- */
+/* 10 service cards: 5 per row, then 2, then 1, so rows always fill evenly */
+.irs-svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(16px,1.3vw,22px);}
+@media (max-width:1199px){.irs-svc-grid{grid-template-columns:repeat(2,1fr);gap:24px;}}
+@media (max-width:700px){.irs-svc-grid{grid-template-columns:1fr;}}
+
+.irs-svc-card{
+  position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;
+}
+.irs-svc-card::after{
+  content:"";position:absolute;left:0;top:0;z-index:5;
+  height:4px;width:0;background:var(--primary);transition:width .45s var(--ease);
+}
+.irs-svc-grid .irs-svc-card:hover,.irs-svc-grid .irs-svc-card:focus-within{transform:translateY(-9px);box-shadow:var(--shadow-lg);border-color:transparent;}
+.irs-svc-card:hover::after,.irs-svc-card:focus-within::after{width:100%;}
+.irs-svc-media{position:relative;height:clamp(158px,12vw,188px);overflow:hidden;background:var(--ink-3);}
+.irs-svc-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.irs-svc-card:hover .irs-svc-media img{transform:scale(1.08);}
+.irs-svc-media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(14,20,27,.06) 0%,rgba(14,20,27,.5) 55%,rgba(14,20,27,.9) 100%);
+}
+.irs-svc-tag{
+  position:absolute;left:14px;top:14px;z-index:2;
+  background:rgba(255,255,255,.93);color:var(--heading);
+  font-family:var(--font-head);font-size:10.08px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:100px;
+}
+.irs-svc-media h3{
+  position:absolute;left:16px;right:16px;bottom:14px;z-index:2;
+  color:#fff;font-size:clamp(16px,1.02vw,18.24px);line-height:1.25;margin:0;
+}
+.irs-svc-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1;gap:15px;}
+.irs-svc-body p{font-size:14.4px;line-height:1.62;color:var(--body);margin:0;}
+.irs-svc-more{
+  margin-top:auto;display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-head);font-weight:700;font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--blue);
+}
+/* Stretched link: the whole card is one click target, while the anchor
+   keeps its real link text for screen readers and search engines. */
+.irs-svc-card{cursor:pointer;}
+.irs-svc-more::before{content:"";position:absolute;inset:0;z-index:6;}
+.irs-svc-more .irs-circle{
+  width:27px;height:27px;border-radius:50%;background:var(--blue-soft);
+  display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);
+}
+.irs-svc-more .irs-circle svg{width:13px;height:13px;}
+.irs-svc-card:hover .irs-svc-more,.irs-svc-card:focus-within .irs-svc-more{color:var(--primary);}
+.irs-svc-card:hover .irs-svc-more .irs-circle,.irs-svc-card:focus-within .irs-svc-more .irs-circle{background:var(--primary);color:#fff;transform:translateX(4px);}
+/* Ring the whole card on keyboard focus rather than just the link text */
+.irs-svc-card:has(.irs-svc-more:focus-visible){outline:3px solid var(--blue);outline-offset:3px;}
+.irs-svc-card:has(.irs-svc-more:focus-visible) .irs-svc-more:focus-visible{outline:none;}
+
+/* ---------- Tabs ---------- */
+.irs-tabs-nav{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  background:var(--surface-2);border:1px solid var(--line);
+  padding:8px;border-radius:18px;width:fit-content;max-width:100%;
+  margin:0 auto clamp(42px,4.2vw,68px);
+}
+.irs-tab-btn{
+  font-family:var(--font-head);font-weight:700;font-size:14.4px;
+  text-transform:uppercase;letter-spacing:.05em;
+  padding:14px 26px;border-radius:12px;border:0;
+  background:transparent;color:var(--heading);cursor:pointer;transition:all .25s var(--ease);
+}
+.irs-tab-btn:hover{color:var(--primary);background:rgba(247,149,33,.1);}
+.irs-tab-btn.irs-is-active{background:var(--primary);color:#fff;box-shadow:0 8px 20px rgba(247,149,33,.32);}
+.irs-tab-panel{display:none;}
+.irs-tab-panel.irs-is-active{display:block;animation:irs-fadeUp .45s var(--ease);}
+@keyframes irs-fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.irs-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,68px);align-items:center;}
+.irs-split-media{position:relative;}
+.irs-split-media img{border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);width:100%;position:relative;z-index:1;}
+.irs-exp-badge{
+  position:absolute;left:-18px;bottom:28px;z-index:3;
+  background:var(--primary);color:#fff;border-radius:18px;
+  padding:20px 26px;box-shadow:0 18px 40px rgba(247,149,33,.4);
+  display:flex;flex-direction:column;line-height:1;
+}
+.irs-exp-badge strong{font-family:var(--font-head);font-size:40px;font-weight:800;letter-spacing:-.03em;}
+.irs-exp-badge span{font-size:13.12px;font-weight:600;margin-top:8px;opacity:.95;max-width:8em;line-height:1.35;}
+@media (max-width:600px){.irs-exp-badge{left:10px;bottom:14px;padding:15px 19px;}.irs-exp-badge strong{font-size:28.8px;}}
+.irs-split-media::before{
+  content:"";position:absolute;width:56%;height:56%;right:-22px;top:-22px;z-index:-1;border-radius:var(--radius-lg);
+  background-image:radial-gradient(var(--primary) 1.6px,transparent 1.6px);background-size:15px 15px;opacity:.4;
+}
+.irs-check-list{display:grid;gap:13px;margin:24px 0 30px;}
+.irs-check-list li{display:flex;gap:13px;align-items:flex-start;font-size:16px;color:var(--body);}
+.irs-check-list svg{width:22px;height:22px;color:var(--primary);flex:none;margin-top:2px;}
+@media (max-width:900px){
+  .irs-split{grid-template-columns:1fr;}
+  .irs-split--flip .irs-split-media{order:-1;}
+}
+
+/* ---------- Process / why ---------- */
+.irs-why{position:relative;overflow:hidden;background:var(--ink);}
+.irs-why-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;}
+.irs-why::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,27,.94),rgba(14,20,27,.97));}
+.irs-why .irs-container{position:relative;z-index:2;}
+.irs-step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(20px,1.8vw,28px);}
+.irs-step{
+  position:relative;overflow:hidden;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:38px 32px;transition:all .35s var(--ease);
+}
+.irs-step::before{
+  content:attr(data-n);position:absolute;right:18px;top:4px;
+  font-family:var(--font-head);font-weight:800;font-size:80px;line-height:1;
+  color:rgba(255,255,255,.05);transition:color .35s var(--ease);pointer-events:none;
+}
+.irs-step:hover::before{color:rgba(247,149,33,.16);}
+.irs-step-grid .irs-step:hover{background:rgba(255,255,255,.09);border-color:rgba(247,149,33,.55);transform:translateY(-8px);}
+.irs-step-ico{
+  width:62px;height:62px;border-radius:16px;background:var(--primary-soft);
+  border:1px solid rgba(247,149,33,.3);
+  display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+}
+.irs-step-ico svg{width:28px;height:28px;color:var(--primary);}
+.irs-step-num{
+  font-family:var(--font-head);font-size:12.16px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blue);display:block;margin-bottom:9px;
+}
+.irs-step h4{color:#fff;margin-bottom:10px;}
+.irs-step p{color:rgba(255,255,255,.68);font-size:15.36px;margin:0;}
+
+/* ---------- FAQ ---------- */
+.irs-faq-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,4vw,72px);align-items:start;}
+@media (max-width:900px){.irs-faq-wrap{grid-template-columns:1fr;}}
+.irs-faq-list{display:grid;gap:14px;}
+.irs-faq-item{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;transition:border-color .25s,box-shadow .25s;}
+.irs-faq-item.irs-is-open{border-color:var(--primary);box-shadow:var(--shadow-sm);}
+.irs-faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:22px 24px;background:none;border:0;cursor:pointer;text-align:left;
+  font-family:var(--font-head);font-weight:700;font-size:16.64px;color:var(--heading);
+}
+.irs-faq-q .irs-sign{
+  width:30px;height:30px;border-radius:50%;background:var(--surface-2);color:var(--heading);flex:none;
+  display:flex;align-items:center;justify-content:center;transition:all .25s var(--ease);
+}
+.irs-faq-q .irs-sign svg{width:15px;height:15px;}
+.irs-faq-item.irs-is-open .irs-sign{background:var(--primary);color:#fff;transform:rotate(180deg);}
+.irs-faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);}
+.irs-faq-a p{padding:0 24px 24px;margin:0;font-size:16px;}
+
+/* ---------- CTA band ---------- */
+.irs-cta-band{
+  background:linear-gradient(120deg,var(--primary) 0%,#f2820a 55%,var(--primary-dark) 100%);
+  color:#fff;position:relative;overflow:hidden;
+}
+.irs-cta-band::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.22) 1.6px,transparent 1.6px);background-size:22px 22px;opacity:.55;
+}
+.irs-cta-band::after{
+  content:"";position:absolute;right:-90px;top:-130px;width:400px;height:400px;
+  border-radius:50%;background:rgba(255,255,255,.1);pointer-events:none;
+}
+.irs-cta-band .irs-container{position:relative;z-index:2;}
+.irs-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;}
+.irs-cta-inner h2{color:#fff;margin-bottom:10px;}
+.irs-cta-inner p{color:rgba(255,255,255,.93);font-size:17.28px;margin:0;}
+.irs-cta-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.irs-cta-actions .irs-btn--white{background:#fff;border-color:#fff;color:var(--heading);}
+.irs-cta-actions .irs-btn--white:hover{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateY(-2px);}
+.irs-cta-actions .irs-btn--ghost{background:var(--ink);border-color:var(--ink);color:#fff;}
+.irs-cta-actions .irs-btn--ghost:hover{background:var(--ink-3);border-color:var(--ink-3);color:#fff;}
+
+/* ---------- Contact block (contact info + map + form) ---------- */
+.irs-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,3.5vw,60px);align-items:start;}
+.irs-info-list{display:grid;gap:16px;margin:30px 0 34px;}
+.irs-info-item{
+  display:flex;gap:18px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+  transition:border-color .25s,transform .25s var(--ease),box-shadow .25s;
+}
+.irs-info-item:hover{border-color:var(--primary);transform:translateX(5px);box-shadow:var(--shadow-sm);}
+.irs-info-ico{
+  width:50px;height:50px;border-radius:13px;background:var(--ink);color:#fff;flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.irs-info-ico svg{width:21px;height:21px;}
+.irs-info-item h4{margin:0 0 4px;font-size:12.48px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+.irs-info-item .irs-val{display:block;font-family:var(--font-head);font-weight:700;font-size:17.6px;color:var(--heading);line-height:1.4;}
+.irs-info-item .irs-sub{display:block;font-size:14.72px;color:var(--muted);line-height:1.5;}
+.irs-info-item .irs-info-text{flex:1;min-width:0;}
+.irs-map-frame{
+  border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);height:clamp(300px,32vw,420px);background:var(--surface-3);
+}
+.irs-map-frame iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.25);}
+.irs-contact-form-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(28px,2.4vw,42px);box-shadow:var(--shadow);border-top:5px solid var(--blue);
+}
+@media (max-width:920px){.irs-contact-grid{grid-template-columns:1fr;}}
+
+/* ---------- Footer ---------- */
+.irs-site-footer{
+  position:relative;background:var(--ink);color:rgba(255,255,255,.68);
+  padding-top:clamp(64px,6vw,100px);
+}
+.irs-site-footer::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,var(--primary) 0%,var(--primary) 50%,var(--blue) 50%,var(--blue) 100%);
+}
+.irs-footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;
+  gap:clamp(28px,3vw,52px);padding-bottom:clamp(42px,4vw,64px);
+}
+.irs-footer-logo{width:118px;margin-bottom:22px;}
+.irs-footer-col h4{color:#fff;font-size:13.76px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:22px;}
+.irs-footer-col p{font-size:15.52px;line-height:1.8;}
+.irs-footer-links{display:grid;gap:12px;}
+.irs-footer-links a{display:inline-flex;align-items:center;gap:10px;font-size:15.52px;transition:color .2s,gap .2s;}
+.irs-footer-links a svg{width:13px;height:13px;color:var(--primary);flex:none;}
+.irs-footer-links a:hover{color:var(--primary);gap:14px;}
+.irs-footer-contact{display:grid;gap:16px;}
+.irs-footer-contact a,.irs-footer-contact div{display:flex;gap:13px;align-items:flex-start;font-size:15.84px;}
+.irs-footer-contact svg{width:18px;height:18px;color:var(--primary);flex:none;margin-top:4px;}
+.irs-footer-contact a:hover{color:var(--primary);}
+.irs-socials{display:flex;gap:11px;margin-top:24px;}
+.irs-socials a{
+  width:44px;height:44px;border-radius:12px;background:var(--primary);
+  border:1px solid var(--primary);display:flex;align-items:center;justify-content:center;
+  transition:all .25s var(--ease);
+}
+.irs-socials svg{width:19px;height:19px;color:#fff;}
+.irs-socials a:hover{
+  background:var(--primary-dark);border-color:var(--primary-dark);
+  transform:translateY(-3px);box-shadow:0 10px 22px rgba(247,149,33,.38);
+}
+.irs-footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);padding:24px 0;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-size:14.4px;
+}
+.irs-footer-bottom a:hover{color:var(--primary);}
+@media (max-width:900px){.irs-footer-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.irs-footer-grid{grid-template-columns:1fr;}.irs-footer-bottom{justify-content:center;text-align:center;}}
+
+/* ---------- Floating call now button (mobile) ---------- */
+.irs-call-float{
+  position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:880;
+  display:none;align-items:center;gap:11px;
+  background:var(--primary);color:#fff;
+  font-family:var(--font-head);font-weight:800;font-size:15.68px;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:16px 30px;border-radius:100px;
+  box-shadow:0 14px 34px rgba(247,149,33,.48),0 0 0 6px rgba(247,149,33,.14);
+  animation:irs-callPulse 2.6s ease-in-out infinite;
+}
+.irs-call-float svg{width:19px;height:19px;}
+.irs-call-float:active{transform:translateX(-50%) scale(.97);}
+@keyframes irs-callPulse{
+  0%,100%{box-shadow:0 14px 34px rgba(247,149,33,.48),0 0 0 6px rgba(247,149,33,.14);}
+  50%{box-shadow:0 14px 34px rgba(247,149,33,.48),0 0 0 14px rgba(247,149,33,0);}
+}
+@media (max-width:900px){
+  .irs-call-float{display:inline-flex;}
+  body{padding-bottom:82px;}
+}
+@media (prefers-reduced-motion:reduce){
+  /* animation-duration alone would make infinite loops strobe, so stop them */
+  .irs-call-float,.irs-btn--glow,.irs-btn--glow::after{animation:none !important;}
+  *{
+    transition-duration:.01ms !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* ---------- Reveal ---------- */
+/* Motion uses the independent translate/scale properties, never transform,
+   so reveals can never collide with hover transforms on the same element. */
+.irs-reveal,[data-reveal]{
+  opacity:0;
+  transition:opacity .9s var(--ease),translate .9s var(--ease),scale .9s var(--ease),filter .9s var(--ease);
+  transition-delay:var(--d,0ms);
+  will-change:opacity,translate;
+}
+.irs-reveal,[data-reveal="up"]{translate:0 34px;}
+[data-reveal="left"]{translate:-44px 0;}
+[data-reveal="right"]{translate:44px 0;}
+[data-reveal="scale"]{scale:.94;filter:blur(6px);}
+[data-reveal="fade"]{translate:0 0;}
+.irs-reveal.irs-is-in,[data-reveal].irs-is-in{opacity:1;translate:0 0;scale:1;filter:none;}
+.irs-reveal.irs-is-in,[data-reveal].irs-is-in{will-change:auto;}
+
+/* Scroll progress rail */
+.irs-scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0;z-index:1000;
+  background:linear-gradient(90deg,var(--primary),var(--blue));
+  box-shadow:0 0 14px rgba(247,149,33,.55);
+  pointer-events:none;
+}
+
+/* Ambient depth wash for light sections */
+.irs-section{position:relative;overflow-x:clip;}
+.irs-section>.irs-container{position:relative;z-index:1;}
+.irs-has-wash::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(820px 420px at 88% -5%,rgba(40,172,226,.09),transparent 62%),
+    radial-gradient(680px 400px at 6% 105%,rgba(247,149,33,.08),transparent 62%);
+}
+/* Aurora for dark sections. z-index lifts it above the section's own
+   darkening overlay, which is a later sibling pseudo-element. */
+.irs-has-aurora::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(760px 420px at 10% 4%,rgba(40,172,226,.3),transparent 62%),
+    radial-gradient(660px 380px at 90% 96%,rgba(247,149,33,.24),transparent 64%);
+}
+.irs-has-aurora>.irs-container{z-index:2;}
+/* Hairline separator between adjacent light bands */
+.irs-edge-top{border-top:1px solid var(--line);}
+
+.irs-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px;}

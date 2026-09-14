@@ -1,0 +1,174 @@
+/* ============================================================
+   IRS redesign: WordPress integration layer.
+   Maps wp_nav_menu and Contact Form 7 output onto the design,
+   and styles the inner page banner. Hand written, not generated.
+   ============================================================ */
+
+/* ---------- Desktop navigation from wp_nav_menu ---------- */
+.irs-nav-list{list-style:none;margin:0;padding:0;}
+.irs-nav-list > li{position:relative;}
+.irs-nav-list > li > a{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--font-head);font-weight:700;font-size:13.92px;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--heading);
+  padding:12px 14px;border-radius:9px;transition:color .2s,background .2s;
+}
+.irs-nav-list > li:hover > a,
+.irs-nav-list > li.current-menu-item > a,
+.irs-nav-list > li.current-menu-ancestor > a{color:var(--primary);background:var(--primary-soft);}
+
+.irs-nav-list > li.menu-item-has-children > a::after{
+  content:"";width:9px;height:9px;flex:none;opacity:.55;
+  border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;
+  transform:translateY(-2px) rotate(45deg);transition:transform .25s var(--ease);
+}
+.irs-nav-list > li.menu-item-has-children:hover > a::after{transform:translateY(1px) rotate(225deg);}
+
+.irs-nav-list .sub-menu{
+  list-style:none;margin:0;padding:8px;
+  position:absolute;top:calc(100% + 10px);left:0;min-width:266px;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:all .24s var(--ease);z-index:50;
+}
+.irs-nav-list .sub-menu::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px;}
+.irs-nav-list > li:hover > .sub-menu{opacity:1;visibility:visible;transform:translateY(0);}
+.irs-nav-list .sub-menu a{
+  display:block;padding:11px 15px;border-radius:9px;
+  font-size:15.04px;font-weight:500;color:var(--body);transition:all .18s;
+}
+.irs-nav-list .sub-menu a:hover{background:var(--surface-2);color:var(--primary);padding-left:19px;}
+/* keep the last dropdowns inside the viewport */
+.irs-nav-list > li:nth-last-child(-n+2) .sub-menu{left:auto;right:0;}
+
+/* ---------- Mobile drawer navigation ---------- */
+.irs-m-nav{list-style:none;margin:0;padding:0;}
+.irs-m-nav > li{border-bottom:1px solid var(--line);position:relative;}
+.irs-m-nav > li > a{
+  display:block;padding:16px 44px 16px 2px;
+  font-family:var(--font-head);font-weight:700;font-size:16px;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--heading);
+}
+.irs-m-toggle{
+  position:absolute;top:8px;right:0;width:38px;height:38px;
+  display:flex;align-items:center;justify-content:center;
+  background:none;border:0;cursor:pointer;color:var(--heading);padding:0;
+}
+.irs-m-toggle svg{width:14px;height:14px;opacity:.55;transition:transform .25s var(--ease);}
+.irs-m-toggle[aria-expanded="true"] svg{transform:rotate(180deg);color:var(--primary);opacity:1;}
+.irs-m-nav .sub-menu{
+  list-style:none;margin:0;padding:0;
+  max-height:0;overflow:hidden;transition:max-height .32s var(--ease);
+}
+.irs-m-nav .sub-menu a{
+  display:block;padding:11px 0 11px 16px;font-size:15.36px;color:var(--body);
+  border-left:2px solid var(--line);margin-left:2px;
+}
+.irs-m-nav .sub-menu a:hover{color:var(--primary);border-color:var(--primary);}
+.irs-m-nav .sub-menu li:last-child a{margin-bottom:12px;}
+
+/* ---------- Footer menu links from wp_nav_menu ---------- */
+.irs-footer-links{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+.irs-footer-links a{display:inline-flex;align-items:center;gap:10px;font-size:15.52px;transition:color .2s,gap .2s;}
+.irs-footer-links a:hover{color:var(--primary);gap:14px;}
+.irs-fl-icon{
+  width:7px;height:7px;flex:none;
+  border-right:2px solid var(--primary);border-bottom:2px solid var(--primary);
+  transform:rotate(-45deg);
+}
+
+/* ---------- Inner page banner ---------- */
+.irs-hero--inner{padding:clamp(52px,5vw,88px) 0 clamp(60px,6vw,104px);}
+.irs-hero--inner h1{font-size:clamp(30px,3.4vw,58px);}
+.irs-hero-grid--single{grid-template-columns:1fr;max-width:900px;}
+.irs-crumbs{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:18px;
+  font-size:14px;font-weight:600;color:rgba(255,255,255,.72);
+}
+.irs-crumbs a{color:#fff;}
+.irs-crumbs a:hover{color:var(--primary);}
+.irs-brand-text{font-family:var(--font-head);font-weight:800;font-size:20px;color:var(--heading);}
+
+/* ---------- Contact Form 7 inside the design's form cards ---------- */
+.irs-cf7 .wpcf7-form > p,
+.irs-cf7 .contact-form > p{margin:0;}
+.irs-cf7 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0;}
+.irs-cf7 .get{display:flex;flex-direction:column;gap:7px;min-width:0;}
+.irs-cf7 .get p{margin:0 !important;line-height:normal;}
+.irs-cf7 .get:has(textarea),
+.irs-cf7 .get:has(input[type="submit"]),
+.irs-cf7 .get:has(.wpcf7-acceptance){grid-column:1 / -1;}
+
+.irs-cf7 .wpcf7-form-control-wrap{display:block;width:100%;}
+.irs-cf7 input[type="text"],
+.irs-cf7 input[type="email"],
+.irs-cf7 input[type="tel"],
+.irs-cf7 input[type="number"],
+.irs-cf7 input[type="date"],
+.irs-cf7 select,
+.irs-cf7 textarea{
+  width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:11px;
+  background:var(--surface-2);font-size:16px;color:var(--heading);
+  font-family:var(--font-body);line-height:normal;transition:border-color .2s,background .2s,box-shadow .2s;
+}
+.irs-cf7 textarea{resize:vertical;min-height:104px;height:104px;}
+.irs-cf7 input:focus,.irs-cf7 select:focus,.irs-cf7 textarea:focus{
+  outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px var(--primary-soft);
+}
+.irs-cf7 select{
+  appearance:none;cursor:pointer;padding-right:44px;
+  background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23828486' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;background-size:17px;
+}
+.irs-cf7 .wpcf7-acceptance .wpcf7-list-item{margin:0;}
+.irs-cf7 .wpcf7-acceptance label{
+  display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  font-family:var(--font-body);font-size:13.92px;font-weight:400;letter-spacing:0;
+  text-transform:none;color:var(--muted);line-height:1.55;margin:0;
+}
+.irs-cf7 .wpcf7-acceptance input[type="checkbox"]{width:19px;height:19px;margin-top:2px;accent-color:var(--primary);flex:none;}
+
+.irs-cf7 input[type="submit"]{
+  display:inline-flex;align-items:center;justify-content:center;width:100%;
+  font-family:var(--font-head);font-weight:700;font-size:16px;
+  letter-spacing:.02em;text-transform:uppercase;
+  padding:20px 36px;border-radius:12px;border:2px solid var(--primary);
+  background:var(--primary);color:#fff;cursor:pointer;
+  box-shadow:0 10px 26px rgba(247,149,33,.32);
+  transition:all .25s var(--ease);
+}
+.irs-cf7 input[type="submit"]:hover{background:var(--primary-dark);border-color:var(--primary-dark);transform:translateY(-2px);}
+
+.irs-cf7 .wpcf7-not-valid-tip{font-size:13px;color:#c0392b;margin-top:6px;}
+.irs-cf7 .wpcf7-response-output{
+  margin:14px 0 0 !important;padding:12px 14px !important;
+  border-radius:10px;border-width:1.5px !important;font-size:14px;line-height:1.5;text-align:left;
+}
+.irs-cf7 .wpcf7-spinner{margin:8px auto 0;display:block;}
+
+@media (max-width:560px){
+  .irs-cf7 .form-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- Admin bar offset for the sticky header ---------- */
+.admin-bar .irs-site-header{top:32px;}
+.admin-bar .irs-scroll-progress{top:32px;}
+@media screen and (max-width:782px){
+  .admin-bar .irs-site-header{top:46px;}
+  .admin-bar .irs-scroll-progress{top:46px;}
+}
+
+/* ---------- Safety nets ----------
+   The parent theme normally supplies these. Declared here so the redesign is
+   still correct if the parent stylesheet load order ever changes. */
+.screen-reader-text{
+  position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+.screen-reader-text:focus{
+  position:fixed !important;top:12px;left:12px;z-index:1001;
+  width:auto;height:auto;clip:auto;clip-path:none;
+  padding:14px 22px;background:#fff;color:var(--heading);
+  border-radius:10px;box-shadow:var(--shadow);font-weight:700;
+}
