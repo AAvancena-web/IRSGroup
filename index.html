@@ -35,6 +35,7 @@
   --surface:#ffffff;
   --surface-2:#f5f7fa;
   --surface-3:#eef2f6;
+  --surface-tint:#eef6fb;   /* soft blue band */
 
   --radius-sm:10px;
   --radius:16px;
@@ -98,6 +99,7 @@ p:last-child{margin-bottom:0;}
 [id]{scroll-margin-top:calc(var(--header-h) + 16px);}
 .section--tight{padding:clamp(60px,5.5vw,100px) 0;}
 .section--alt{background:var(--surface-2);}
+.section--tint{background:var(--surface-tint);}
 .section--dark{background:var(--ink);color:rgba(255,255,255,.76);}
 .section--dark h2,.section--dark h3,.section--dark h4{color:#fff;}
 
@@ -314,7 +316,7 @@ p:last-child{margin-bottom:0;}
   background:var(--blue);color:rgba(255,255,255,.88);
   padding:clamp(64px,6.5vw,112px) 0 clamp(120px,11vw,190px);
 }
-.hero-bg{position:absolute;inset:0;object-fit:cover;object-position:left center;width:100%;height:100%;}
+.hero-bg{position:absolute;left:0;top:-12%;object-fit:cover;object-position:left center;width:100%;height:124%;will-change:translate;}
 /* Directional scrim: darkens the blue behind the copy, leaves the orange
    arc clean behind the form card on the right. */
 .hero::after{
@@ -707,14 +709,58 @@ p:last-child{margin-bottom:0;}
 }
 
 /* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
-.reveal.is-in{opacity:1;transform:none;}
+/* Motion uses the independent translate/scale properties, never transform,
+   so reveals can never collide with hover transforms on the same element. */
+.reveal,[data-reveal]{
+  opacity:0;
+  transition:opacity .9s var(--ease),translate .9s var(--ease),scale .9s var(--ease),filter .9s var(--ease);
+  transition-delay:var(--d,0ms);
+  will-change:opacity,translate;
+}
+.reveal,[data-reveal="up"]{translate:0 34px;}
+[data-reveal="left"]{translate:-44px 0;}
+[data-reveal="right"]{translate:44px 0;}
+[data-reveal="scale"]{scale:.94;filter:blur(6px);}
+[data-reveal="fade"]{translate:0 0;}
+.reveal.is-in,[data-reveal].is-in{opacity:1;translate:0 0;scale:1;filter:none;}
+.reveal.is-in,[data-reveal].is-in{will-change:auto;}
+
+/* Scroll progress rail */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0;z-index:1000;
+  background:linear-gradient(90deg,var(--primary),var(--blue));
+  box-shadow:0 0 14px rgba(247,149,33,.55);
+  pointer-events:none;
+}
+
+/* Ambient depth wash for light sections */
+.section{position:relative;overflow-x:clip;}
+.section>.container{position:relative;z-index:1;}
+.has-wash::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(820px 420px at 88% -5%,rgba(40,172,226,.09),transparent 62%),
+    radial-gradient(680px 400px at 6% 105%,rgba(247,149,33,.08),transparent 62%);
+}
+/* Aurora for dark sections. z-index lifts it above the section's own
+   darkening overlay, which is a later sibling pseudo-element. */
+.has-aurora::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(760px 420px at 10% 4%,rgba(40,172,226,.3),transparent 62%),
+    radial-gradient(660px 380px at 90% 96%,rgba(247,149,33,.24),transparent 64%);
+}
+.has-aurora>.container{z-index:2;}
+/* Hairline separator between adjacent light bands */
+.edge-top{border-top:1px solid var(--line);}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px;}
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <!-- ============================================================
      GLOBAL HEADER  (will live in the WordPress global header)
@@ -867,7 +913,7 @@ p:last-child{margin-bottom:0;}
   <div class="container">
     <div class="hero-grid">
 
-      <div class="hero-copy">
+      <div class="hero-copy" data-reveal="left">
         <span class="hero-badge"><span class="dot"></span> Trusted for over 25 years</span>
         <h1>We Find People, Serve Documents And <span class="hl">Recover What You Are Owed</span></h1>
         <p class="hero-lead">
@@ -903,7 +949,7 @@ p:last-child{margin-bottom:0;}
         </ul>
       </div>
 
-      <div class="form-card">
+      <div class="form-card" data-reveal="right">
         <h2>Reach Out To Us Today</h2>
         <p class="form-sub">Tell us what you need and our team will come back to you with a clear price and a plan.</p>
         <div class="form-success" id="heroSuccess">Thank you. Your enquiry has been received and our team will be in touch shortly.</div>
@@ -966,7 +1012,7 @@ p:last-child{margin-bottom:0;}
      ============================================================ -->
 <section class="stats">
   <div class="container">
-    <div class="stats-grid">
+    <div class="stats-grid" data-reveal="scale">
       <div class="stat">
         <div class="stat-num">25+</div>
         <div class="stat-label">Years locating people and recovering assets</div>
@@ -990,7 +1036,7 @@ p:last-child{margin-bottom:0;}
 <!-- ============================================================
      SERVICES
      ============================================================ -->
-<section class="section section--alt" id="services">
+<section class="section section--alt has-wash" id="services">
   <div class="container">
     <div class="sec-head sec-head--center reveal">
       <span class="eyebrow">Our Services</span>
@@ -998,7 +1044,7 @@ p:last-child{margin-bottom:0;}
       <p>Professional field agents are crucial in the locating and recovery process for debts and assets. Their expertise ensures effective tracing, minimises losses and lifts recovery rates, giving businesses and individuals real peace of mind.</p>
     </div>
 
-    <div class="svc-grid">
+    <div class="svc-grid" data-stagger>
 
       <article class="svc-card reveal">
         <div class="svc-media">
@@ -1153,7 +1199,7 @@ p:last-child{margin-bottom:0;}
 <!-- ============================================================
      CORE SERVICE TABS
      ============================================================ -->
-<section class="section">
+<section class="section has-wash">
   <div class="container">
     <div class="sec-head sec-head--center reveal">
       <span class="eyebrow">IRS Group Services</span>
@@ -1171,10 +1217,10 @@ p:last-child{margin-bottom:0;}
 
       <div class="tab-panel is-active" id="tab-skip" role="tabpanel" aria-labelledby="btn-skip">
         <div class="split">
-          <div class="split-media">
+          <div class="split-media" data-reveal="left">
             <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/one-stop-shop-img.png" alt="IRS Group skiptracing team" loading="lazy">
           </div>
-          <div>
+          <div data-reveal="right">
             <h3>The One Stop Shop For All Your Debt Recovery Needs</h3>
             <p>IRS Group is known in the industry for our skiptracing and locating skills. For over 25 years we have been the go to place for locating hard to find persons of interest without breaking the budget.</p>
             <ul class="check-list">
@@ -1189,10 +1235,10 @@ p:last-child{margin-bottom:0;}
 
       <div class="tab-panel" id="tab-serve" role="tabpanel" aria-labelledby="btn-serve">
         <div class="split">
-          <div class="split-media">
+          <div class="split-media" data-reveal="left">
             <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/process-serving-box-img.png" alt="Process serving documents" loading="lazy">
           </div>
-          <div>
+          <div data-reveal="right">
             <h3>Safe And Legal Document Handling Assurance</h3>
             <p>For over 25 years our professional process serving has established itself as a leader in the field. Our team delivers a wide range of legal documents efficiently and accurately.</p>
             <ul class="check-list">
@@ -1207,10 +1253,10 @@ p:last-child{margin-bottom:0;}
 
       <div class="tab-panel" id="tab-field" role="tabpanel" aria-labelledby="btn-field">
         <div class="split">
-          <div class="split-media">
+          <div class="split-media" data-reveal="left">
             <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/06/home-left.jpg" alt="Field agent on a call" loading="lazy">
           </div>
-          <div>
+          <div data-reveal="right">
             <h3>Comprehensive Field Call Assistance</h3>
             <p>IRS Group is your partner for field services across Australia, covering metropolitan areas and remote regions. Our extensive network guarantees dependable support wherever you are located.</p>
             <ul class="check-list">
@@ -1225,10 +1271,10 @@ p:last-child{margin-bottom:0;}
 
       <div class="tab-panel" id="tab-repo" role="tabpanel" aria-labelledby="btn-repo">
         <div class="split">
-          <div class="split-media">
+          <div class="split-media" data-reveal="left">
             <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/car-repo-img.png" alt="Vehicle repossession" loading="lazy">
           </div>
-          <div>
+          <div data-reveal="right">
             <h3>Qualified Agents For Repossessions In Australia</h3>
             <p>We understand the complexities involved in reclaiming assets. Our highly skilled mercantile agents conduct repossession work professionally and ethically, adhering to all legislation with integrity.</p>
             <ul class="check-list">
@@ -1253,7 +1299,7 @@ p:last-child{margin-bottom:0;}
 <!-- ============================================================
      WHY CHOOSE US
      ============================================================ -->
-<section class="section section--dark why">
+<section class="section section--dark has-aurora why">
   <img class="why-bg" src="https://www.irsgroup.com.au/wp-content/uploads/2025/06/background_why.jpg" alt="" aria-hidden="true">
   <div class="container">
     <div class="sec-head sec-head--center reveal">
@@ -1262,7 +1308,7 @@ p:last-child{margin-bottom:0;}
       <p>Every file follows the same disciplined process, so you always know what stage your matter is at and what comes next.</p>
     </div>
 
-    <div class="step-grid">
+    <div class="step-grid" data-stagger>
       <div class="step reveal" data-n="01">
         <div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.9 4.9 2.9 2.9"/><path d="m16.2 16.2 2.9 2.9"/><path d="M2 12h4"/><path d="M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
         <span class="step-num">Step 01</span>
@@ -1300,7 +1346,7 @@ p:last-child{margin-bottom:0;}
 <!-- ============================================================
      WHAT IS A SKIPTRACE
      ============================================================ -->
-<section class="section">
+<section class="section has-wash">
   <div class="container">
     <div class="split split--flip">
       <div class="reveal">
@@ -1318,7 +1364,7 @@ p:last-child{margin-bottom:0;}
           <a href="https://app.icollecthq.com/a/irs-group/signup" class="btn btn--outline">Self Service Debt Collection</a>
         </div>
       </div>
-      <div class="split-media reveal">
+      <div class="split-media" data-reveal="right">
         <img src="https://www.irsgroup.com.au/wp-content/uploads/2025/07/who-we-are-large-back-img.png" alt="IRS Group investigators at work" loading="lazy">
         <div class="exp-badge"><strong>25+</strong><span>Years in the field</span></div>
       </div>
@@ -1329,7 +1375,7 @@ p:last-child{margin-bottom:0;}
 <!-- ============================================================
      FAQ
      ============================================================ -->
-<section class="section">
+<section class="section section--tint edge-top has-wash">
   <div class="container">
     <div class="faq-wrap">
       <div class="reveal">
@@ -1341,32 +1387,32 @@ p:last-child{margin-bottom:0;}
         </div>
       </div>
 
-      <div class="faq-list reveal">
-        <div class="faq-item">
+      <div class="faq-list" data-stagger>
+        <div class="faq-item reveal">
           <button class="faq-q">How long does a skiptrace take?
             <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="faq-a"><p>Turnaround depends on the depth of the search. A straightforward address verification is usually far quicker than an in depth investigation on a subject who is deliberately keeping a low profile. We will give you a realistic timeframe when we quote your file.</p></div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">Do you cover all of Australia?
             <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="faq-a"><p>Yes. We have head offices on the Gold Coast in Queensland and in Adelaide, South Australia, with a field network covering metropolitan and remote areas nationally. We also work with international partners when a subject has left the country.</p></div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">Is skiptracing legal?
             <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="faq-a"><p>It is, when it is done properly. Our work relies on lawful sources, licensed agents and strict compliance with privacy and credit legislation, including the National Credit Code where it applies.</p></div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">Can you handle bulk files?
             <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="faq-a"><p>Absolutely. High volume skiptracing is one of our specialities. Send us your ledger and we will scope the work, agree pricing and return results in a structured format that drops straight back into your system.</p></div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">What does it cost?
             <span class="sign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
@@ -1401,7 +1447,7 @@ p:last-child{margin-bottom:0;}
 <!-- ============================================================
      CONTACT  |  contact info + google map + form (above footer)
      ============================================================ -->
-<section class="section section--alt" id="contact">
+<section class="section section--alt has-wash" id="contact">
   <div class="container">
     <div class="sec-head sec-head--center reveal">
       <span class="eyebrow">Get In Touch</span>
@@ -1415,8 +1461,8 @@ p:last-child{margin-bottom:0;}
         <h3>Contact Information</h3>
         <p>Our lines are open during business hours and every enquiry is handled by a real person, not an automated queue.</p>
 
-        <div class="info-list">
-          <a class="info-item" href="tel:0755188460">
+        <div class="info-list" data-stagger>
+          <a class="info-item reveal" href="tel:0755188460">
             <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/></svg></span>
             <div class="info-text">
               <h4>Phone</h4>
@@ -1425,7 +1471,7 @@ p:last-child{margin-bottom:0;}
             </div>
           </a>
 
-          <a class="info-item" href="mailto:admin@irsgroup.com.au">
+          <a class="info-item reveal" href="mailto:admin@irsgroup.com.au">
             <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
             <div class="info-text">
               <h4>Email</h4>
@@ -1434,7 +1480,7 @@ p:last-child{margin-bottom:0;}
             </div>
           </a>
 
-          <div class="info-item">
+          <div class="info-item reveal">
             <span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z"/><circle cx="12" cy="11" r="3"/></svg></span>
             <div class="info-text">
               <h4>Offices</h4>
@@ -1659,7 +1705,12 @@ p:last-child{margin-bottom:0;}
         });
         btn.classList.add('is-active');
         btn.setAttribute('aria-selected', 'true');
-        document.getElementById(btn.getAttribute('aria-controls')).classList.add('is-active');
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        panel.classList.add('is-active');
+        // hidden panels never trigger the observer, so reveal their content now
+        panel.querySelectorAll('.reveal,[data-reveal]').forEach(function (el) {
+          el.classList.add('is-in');
+        });
       });
     });
   }
@@ -1683,9 +1734,28 @@ p:last-child{margin-bottom:0;}
     });
   });
 
-  /* Reveal on scroll */
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
+  /* ---- Motion: honour the user's reduced motion preference ---- */
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Staggered reveal on scroll ---- */
+  var revealEls = document.querySelectorAll('.reveal,[data-reveal]');
+
+  // children of a [data-stagger] container cascade in one after another
+  document.querySelectorAll('[data-stagger]').forEach(function (group) {
+    var row = 0, lastTop = null;
+    Array.prototype.forEach.call(group.children, function (child) {
+      var top = child.offsetTop;
+      if (lastTop !== null && Math.abs(top - lastTop) > 4) row = 0;
+      lastTop = top;
+      child.style.setProperty('--d', Math.min(row, 6) * 80 + 'ms');
+      row++;
+    });
+  });
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -1693,14 +1763,66 @@ p:last-child{margin-bottom:0;}
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    revealEls.forEach(function (el, i) {
-      el.style.transitionDelay = (i % 4) * 70 + 'ms';
-      io.observe(el);
-    });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-in'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -70px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
   }
+
+  /* ---- Stat counters ---- */
+  var stats = document.querySelectorAll('.stat-num');
+  function countUp(el) {
+    var raw = el.textContent.trim();
+    var match = raw.match(/^(\d+)(.*)$/);
+    if (!match) return;
+    var target = parseInt(match[1], 10), suffix = match[2] || '';
+    if (reduceMotion) { el.textContent = target + suffix; return; }
+    var dur = 1500, start = null;
+    el.textContent = '0' + suffix;
+    function frame(now) {
+      if (start === null) start = now;
+      var p = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window) {
+    var statIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { countUp(e.target); statIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    stats.forEach(function (el) { statIO.observe(el); });
+  }
+
+  /* ---- Scroll rail + banner parallax, batched into one rAF ---- */
+  var rail = document.getElementById('scrollProgress');
+  var heroBg = document.querySelector('.hero-bg');
+  var hero = document.querySelector('.hero');
+  var ticking = false;
+
+  function onFrame() {
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset;
+
+    if (rail) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      rail.style.width = (max > 0 ? Math.min(y / max, 1) * 100 : 0) + '%';
+    }
+    if (heroBg && !reduceMotion) {
+      var h = hero.offsetHeight;
+      if (y < h) {
+        // capped so the graphic can never pull away from the banner edge
+        heroBg.style.translate = '0 ' + Math.min(y * 0.14, h * 0.1) + 'px';
+      }
+    }
+  }
+  function requestFrame() {
+    if (!ticking) { ticking = true; requestAnimationFrame(onFrame); }
+  }
+  window.addEventListener('scroll', requestFrame, { passive: true });
+  window.addEventListener('resize', requestFrame, { passive: true });
+  requestFrame();
 
   /* Demo form handling. Swap for Contact Form 7 or Gravity Forms in WordPress. */
   function wireForm(formId, successId) {
